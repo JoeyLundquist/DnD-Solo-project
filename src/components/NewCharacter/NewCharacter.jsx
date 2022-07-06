@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
+import AttributeDropdown from "../AttributeDropdown/AttributeDropdown";
+
 import './NewCharacter.css'
 
 
@@ -9,8 +11,28 @@ const NewCharacter = () => {
     
     const racesAndClasses = useSelector(store => store.characterReducer)
 
-    const [raceName, setRaceName] = useState('');
-    const [className, setClassName] = useState('');
+    const [characterInfo, setCharacterInfo] = useState({
+        name: '',
+        raceName: '',
+        className: '',
+        strength: 0,
+        intelligence: 0,
+        dexterity: 0,
+        wisdom: 0,
+        constitution: 0,
+        charisma: 0,
+        hp: 0,
+        speed: 0,
+        ac: 0
+    })
+    // const [raceName, setRaceName] = useState('');
+    // const [className, setClassName] = useState('');
+    const [strength, setStrength] = useState(0)
+    const [dexterity, setDexterity] = useState(0)
+    const [intelligence, setIntelligence] = useState(0)
+    const [wisdom, setWisdom] = useState(0)
+    const [constitution, setConstitution] = useState(0)
+    const [charisma, setCharisma] = useState(0)
 
     useEffect(() => {
         dispatch({
@@ -18,28 +40,61 @@ const NewCharacter = () => {
         })
     }, [])
 
+    const onSubmit = () => {
+        setCharacterInfo({
+            ...characterInfo, 
+            strength: strength, 
+            dexterity: dexterity, 
+            intelligence: intelligence, 
+            wisdom: wisdom, 
+            constitution: constitution, 
+            charisma: charisma
+        })
+        console.log(characterInfo)
+    }
+
     return(
         <>
             <h2 className="page-label">Character Information</h2>
             <div className="new-character-input-container">
-                <input 
-                    type="text" 
-                    placeholder="Name"
-                /><br></br>
-                <label>Race</label><br></br>
-                <select id='character-race' value={raceName} onChange={e => setRaceName(e.target.value)}>
-                    <option value="0">...</option>
-                    {racesAndClasses.races && racesAndClasses.races.map(race => (
-                        <option value={race.index}>{race.name}</option>
-                    ))}
-                </select><br></br>
-                <label>Class</label><br></br>
-                <select id="character-class" value={className} onChange={e => setClassName(e.target.value)}>
-                    <option value="0">...</option>
-                    {racesAndClasses.classes && racesAndClasses.classes.map(classes => (
-                        <option value={classes.index}>{classes.name}</option>
-                    ))}
-                </select>
+                <div className="inner-character-creation-cards">
+                    <input 
+                        type="text" 
+                        placeholder="Name"
+                        value={characterInfo.name}
+                        onChange={e => setCharacterInfo({...characterInfo, name: e.target.value})}
+                    />
+                
+                    <br></br>
+
+                    <label>Race</label>
+                    <br></br>
+                    <select id='character-race' value={characterInfo.raceName} onChange={e => setCharacterInfo({...characterInfo, raceName: e.target.value})}>
+                        <option value="0">...</option>
+                        {racesAndClasses.races && racesAndClasses.races.map(race => (
+                            <option value={race.index}>{race.name}</option>
+                        ))}
+                    </select><br></br>
+                    <label>Class</label><br></br>
+                    <select id="character-class" value={characterInfo.className} onChange={e => setCharacterInfo({...characterInfo, className: e.target.value})}>
+                        <option value="0">...</option>
+                        {racesAndClasses.classes && racesAndClasses.classes.map(classes => (
+                            <option value={classes.index}>{classes.name}</option>
+                        ))}
+                    </select>
+                </div>
+                <div className="inner-character-creation-cards">
+                    <AttributeDropdown attribute="Strength" setAttribute={setStrength}/>
+                    <AttributeDropdown attribute="Intelligence" setAttribute={setIntelligence}/><br></br>
+                    <AttributeDropdown attribute="Dexterity" setAttribute={setDexterity}/>
+                    <AttributeDropdown attribute="Wisdom" setAttribute={setWisdom}/><br></br>
+                    <AttributeDropdown attribute="Constitution" setAttribute={setConstitution}/>
+                    <AttributeDropdown attribute="Charisma" setAttribute={setCharisma}/>
+                    <input className="hp-input" type="number" placeholder="HP" value={characterInfo.hp} onChange={e => setCharacterInfo({...characterInfo, hp: e.target.value})}/>
+                    <input className="hp-input" type="number" placeholder="AC" value={characterInfo.ac} onChange={e => setCharacterInfo({...characterInfo, ac: e.target.value})}/><br></br>
+                    <input className="hp-input" type="number" placeholder="Speed" value={characterInfo.speed} onChange={e => setCharacterInfo({...characterInfo, speed: e.target.value})}/>
+                </div>
+                <button onClick={onSubmit}>Check me!!</button>
             </div>
         </>
     )
