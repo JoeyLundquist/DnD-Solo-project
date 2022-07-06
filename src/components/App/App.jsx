@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import HomePage from '../HomePage/HomePage';
+import NewCharacter from '../NewCharacter/NewCharacter';
 
 import './App.css';
 
@@ -108,6 +109,16 @@ function App() {
               :
               // Otherwise, show the Landing page
               <LandingPage />
+            }
+          </Route>
+          <Route
+            exact
+            path="/new-character"
+          >
+            {user.id ?
+            <NewCharacter />
+            :
+            <LandingPage />
             }
           </Route>
 

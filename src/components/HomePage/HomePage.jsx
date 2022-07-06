@@ -6,7 +6,7 @@ const HomePage = () => {
     return(
         <>
             <div className="link-container">
-                <Link>New Character</Link><br></br>
+                <Link to="/new-character">New Character</Link><br></br>
                 <Link>Existing Characters</Link>
             </div>
         </>
