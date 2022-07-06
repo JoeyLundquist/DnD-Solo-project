@@ -1,6 +1,6 @@
 const characterReducer = (state = {}, action) => {
     switch(action.type){
-        case 'CREATE_CHARACTER':
+        case 'SET_RACES_AND_CLASSES':
             return action.payload;
 
         default:

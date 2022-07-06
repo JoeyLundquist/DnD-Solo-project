@@ -1,6 +1,17 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const NewCharacter = () => {
+    const dispatch = useDispatch();
+    
+    const racesAndClasses = useSelector(store => store.characterReducer)
+    console.log(racesAndClasses)
+
+    useEffect(() => {
+        dispatch({
+            type:'FETCH_RACES_AND_CLASSES'
+        })
+    }, [])
 
     return(
         <>

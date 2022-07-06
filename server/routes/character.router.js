@@ -11,7 +11,6 @@ router.get('/create-char', (req, res) => {
   };
   axios.get('https://www.dnd5eapi.co/api/races')
     .then(response => {
-      console.log(response.data)
       racesAndClasses.races = response.data.results
       axios.get('https://www.dnd5eapi.co/api/classes')
         .then(responseTwo => {
