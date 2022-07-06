@@ -19,6 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import HomePage from '../HomePage/HomePage';
+import NewCharacter from '../NewCharacter/NewCharacter';
 
 import './App.css';
 
@@ -75,7 +77,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/home" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -103,10 +105,20 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <HomePage />
               :
               // Otherwise, show the Landing page
               <LandingPage />
+            }
+          </Route>
+          <Route
+            exact
+            path="/new-character"
+          >
+            {user.id ?
+            <NewCharacter />
+            :
+            <LandingPage />
             }
           </Route>
 
