@@ -1,11 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import './NewCharacter.css'
+
 
 const NewCharacter = () => {
     const dispatch = useDispatch();
     
     const racesAndClasses = useSelector(store => store.characterReducer)
-    console.log(racesAndClasses)
+
+    const [raceName, setRaceName] = useState('');
+    const [className, setClassName] = useState('');
 
     useEffect(() => {
         dispatch({
@@ -15,23 +20,25 @@ const NewCharacter = () => {
 
     return(
         <>
-            <h2>Character Information</h2>
+            <h2 className="page-label">Character Information</h2>
             <div className="new-character-input-container">
                 <input 
                     type="text" 
                     placeholder="Name"
                 /><br></br>
-                <select>
+                <label>Race</label><br></br>
+                <select id='character-race' value={raceName} onChange={e => setRaceName(e.target.value)}>
                     <option value="0">...</option>
-                    <option value="Human">Human</option>
-                    <option value="2">Dwarf</option>
-                    <option value="3">Dragonborn</option>
-                    <option value="4">Elf</option>
-                    <option value="4">Gnome</option>
-                    <option value="4">Half-Elf</option>
-                    <option value="4">Half-orc</option>
-                    <option value="4">Halfling</option>
-                    <option value="4">Tiefling</option>
+                    {racesAndClasses.races && racesAndClasses.races.map(race => (
+                        <option value={race.index}>{race.name}</option>
+                    ))}
+                </select><br></br>
+                <label>Class</label><br></br>
+                <select id="character-class" value={className} onChange={e => setClassName(e.target.value)}>
+                    <option value="0">...</option>
+                    {racesAndClasses.classes && racesAndClasses.classes.map(classes => (
+                        <option value={classes.index}>{classes.name}</option>
+                    ))}
                 </select>
             </div>
         </>
