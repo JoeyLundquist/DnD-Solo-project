@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import './ItemSearch.css'
 import ItemSearchListItem from '../ItemSearchListItem/ItemSearchListItem';
+import ItemSearchDetails from '../ItemSearchDetails/ItemSearchDetails';
 
 const ItemSearch = () => {
     const dispatch = useDispatch();
@@ -38,7 +39,8 @@ const ItemSearch = () => {
                         </ul>
                     </div>
                     <div className="results-inner-container">
-
+                        <h2>Details</h2>
+                        <ItemSearchDetails />
                     </div>
                 </div>
             </div>
