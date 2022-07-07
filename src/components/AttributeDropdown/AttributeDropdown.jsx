@@ -1,10 +1,10 @@
 import './attributeDropdown.css'
 
-const AttributeDropdown = ({attribute, setAttribute}) => {
+const AttributeDropdown = ({attribute, setAttribute, setInfo}) => {
 
     return(
         <>
-        <div className="attribute-dropdown" onChange={(e) => setAttribute(e.target.value)}>
+        <div className="attribute-dropdown" onChange={(e) => setAttribute(e.target.value)} >
             <label>{attribute}</label><br></br>
             <select>
                 <option value="0">...</option>

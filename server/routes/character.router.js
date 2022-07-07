@@ -29,11 +29,39 @@ router.get('/create-char', (req, res) => {
 
 });
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
+
+router.post('/create-char', (req, res) => {
+  const sqlQuery = `
+    INSERT INTO characters
+    (user_id, name, level, race, class, class_lvl, hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+  `
+  const sqlParams = [
+    req.user.id,
+    req.body.name,
+    req.body.level,
+    req.body.raceName,
+    req.body.className,
+    req.body.classLevel,
+    req.body.hp,
+    req.body.ac,
+    req.body.speed,
+    req.body.strength,
+    req.body.dexterity,
+    req.body.constitution,
+    req.body.intelligence,
+    req.body.wisdom,
+    req.body.charisma
+  ]
+
+  pool.query(sqlQuery, sqlParams)
+    .then(dbRes => {
+      res.sendStatus(201)
+    })
+    .catch(err => {
+      console.error('Failed to POST Character', err)
+      res.sendStatus(500);
+    })
 });
 
 module.exports = router;

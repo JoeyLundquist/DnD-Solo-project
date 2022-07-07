@@ -15,10 +15,20 @@ function* fetchRacesAndClasses() {
     }
 }
 
+function* addCharacter(action) {
+    try{
+        const res = yield axios.post('/api/character/create-char', action.payload)
+    }
+    catch(err) {
+        console.log('Failed to post', err)
+    }
+}
+
 
 
 function* characterSaga(action) {
-    yield takeLatest('FETCH_RACES_AND_CLASSES', fetchRacesAndClasses)
+    yield takeLatest('FETCH_RACES_AND_CLASSES', fetchRacesAndClasses);
+    yield takeLatest('ADD_CHARACTER', addCharacter)
 }
 
 export default characterSaga;
