@@ -1,0 +1,23 @@
+.new-character-input-container{
+    padding: 10px;
+    margin: 5px auto;
+    border: 1px solid black;
+    width: 45%;
+    height: 400px;
+}
+
+.page-label{
+    margin:25px auto;
+    text-align: center;
+}
+
+.inner-character-creation-cards {
+    display: inline-block;
+    width: 50%;
+    height: 99%
+}
+
+.hp-input{
+    width: 40px;
+    margin-right: 45px;
+}
