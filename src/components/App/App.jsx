@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import HomePage from '../HomePage/HomePage';
 import NewCharacter from '../NewCharacter/NewCharacter';
 import CurrentCharacterPage from '../CurrentCharacterPage/CurrentCharacterPage';
+import ItemSearch from '../ItemSearch/ItemSearch';
 
 import './App.css';
 
@@ -127,6 +128,13 @@ function App() {
             path="/current-character"
           >
             <CurrentCharacterPage />
+          </ProtectedRoute>
+          
+          <ProtectedRoute
+            exact
+            path="/item-search"
+          >
+            <ItemSearch />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

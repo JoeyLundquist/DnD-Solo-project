@@ -1,0 +1,13 @@
+.results-container{
+    border: 1px solid black;
+    width: 80%;
+    height: 500px;
+    margin: 10px auto;
+}
+
+.results-inner-container{
+    width: 50%;
+    border-left: 1px solid black;
+    display: inline-block;
+    box-sizing: border-box;
+}
