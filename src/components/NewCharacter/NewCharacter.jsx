@@ -62,6 +62,9 @@ const NewCharacter = () => {
         })
     }   
 
+   
+
+
 
 
     return(
@@ -120,13 +123,16 @@ const NewCharacter = () => {
                     <label>AC</label>
                     <input className="hp-input" type="number" placeholder="AC" value={characterInfo.ac} onChange={e => setCharacterInfo({...characterInfo, ac: e.target.value})}/><br></br>
                     <label>Speed</label>
-                    <input className="hp-input" type="number" placeholder="Speed" value={characterInfo.speed} onChange={e => setCharacterInfo({...characterInfo, speed: e.target.value, strength: strength, 
-            dexterity: dexterity, 
-            intelligence: intelligence, 
-            wisdom: wisdom, 
-            constitution: constitution, 
-            charisma: charisma,
-            level: characterLevel})}/>
+                    <input className="hp-input" type="number" placeholder="Speed" value={characterInfo.speed} onChange={e => setCharacterInfo({...characterInfo, 
+                        speed: e.target.value, 
+                        strength: strength, 
+                        dexterity: dexterity, 
+                        intelligence: intelligence, 
+                        wisdom: wisdom, 
+                        constitution: constitution, 
+                        charisma: charisma,
+                        level: characterLevel})}
+                    />
                 </div>
                 <button onClick={() => onSubmit()}>Check me!!</button>
             </div>

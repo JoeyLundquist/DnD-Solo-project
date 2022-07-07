@@ -2,9 +2,12 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const axios = require('axios')
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 
-router.get('/create-char', (req, res) => {
+router.get('/create-char', rejectUnauthenticated, (req, res) => {
   let racesAndClasses = {
     races: [],
     classes: []
@@ -29,8 +32,23 @@ router.get('/create-char', (req, res) => {
 
 });
 
+//GET ROUTE to collect current character info
+router.get('/', rejectUnauthenticated, (req, res) => {
+  const sqlQuery = `
+    SELECT *
+    FROM characters
+    WHERE id = 1
+  `
+  pool.query(sqlQuery)
+    .then(dbRes => {
+      const character = dbRes.rows[0]
+      res.send(character)
+    })
+    .catch(err => res.sendStatus(500))
+})
 
-router.post('/create-char', (req, res) => {
+
+router.post('/create-char', rejectUnauthenticated, (req, res) => {
   const sqlQuery = `
     INSERT INTO characters
     (user_id, name, level, race, class, class_lvl, hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma)
@@ -63,5 +81,7 @@ router.post('/create-char', (req, res) => {
       res.sendStatus(500);
     })
 });
+
+
 
 module.exports = router;

@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import HomePage from '../HomePage/HomePage';
 import NewCharacter from '../NewCharacter/NewCharacter';
+import CurrentCharacterPage from '../CurrentCharacterPage/CurrentCharacterPage';
 
 import './App.css';
 
@@ -121,6 +122,12 @@ function App() {
             <LandingPage />
             }
           </Route>
+          <ProtectedRoute
+            exact
+            path="/current-character"
+          >
+            <CurrentCharacterPage />
+          </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
