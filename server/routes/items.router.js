@@ -28,7 +28,9 @@ router.get('/search/:value', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/details/', rejectUnauthenticated, (req, res) =>{
-    axios.get(`https://www.dnd5eapi.co${req.body.item}`)
+    console.log(req.body)
+    console.log(req.params)
+    axios.get(`https://www.dnd5eapi.co${req.params.url}`)
         .then(apiRes => {
             res.send(apiRes.data)
         })

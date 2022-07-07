@@ -5,7 +5,7 @@ const ItemSearchListItem = ({item}) => {
     const itemDetails = () => {
         dispatch({
             type: 'FETCH_ITEM_DETAILS',
-            payload: item.url
+            payload: {url: item.url}
         })
     }
 
