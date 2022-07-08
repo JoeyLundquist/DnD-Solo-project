@@ -1,0 +1,16 @@
+.results-container{
+    border: 1px solid black;
+    width: 80%;
+    height: 500px;
+    margin: 10px auto;
+    display: flex;
+}
+
+.results-inner-container{
+    width: 50%;
+    border-left: 1px solid black;
+    display: inline-block;
+    box-sizing: border-box;
+    overflow:scroll;
+    padding: 10px 20px;
+}

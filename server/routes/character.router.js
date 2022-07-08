@@ -37,14 +37,24 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   const sqlQuery = `
     SELECT *
     FROM characters
-    WHERE id = 1
+    WHERE id = $1
+    AND user_id = $2
   `
-  pool.query(sqlQuery)
+
+  pool.query(sqlQuery, [req.body.id, req.user.id])
     .then(dbRes => {
-      const character = dbRes.rows[0]
-      res.send(character)
+      if(dbRes.rows.length === 0){
+        res.sendStatus(404);
+      }
+      else{
+        const character = dbRes.rows[0];
+        res.send(character)
+      }
     })
-    .catch(err => res.sendStatus(500))
+    .catch(err => {
+      res.sendStatus(500)
+      console.log('Failed to get', err)
+    })
 })
 
 
