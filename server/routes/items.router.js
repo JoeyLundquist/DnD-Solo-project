@@ -27,10 +27,9 @@ router.get('/search/:value', rejectUnauthenticated, (req, res) => {
     .catch(error => console.log('Failed to get list', error))
 });
 
-router.get('/details/', rejectUnauthenticated, (req, res) =>{
-    console.log(req.body)
-    console.log(req.params)
-    axios.get(`https://www.dnd5eapi.co${req.params.url}`)
+router.post('/details/', rejectUnauthenticated, (req, res) =>{
+    console.log(req.body.url)
+    axios.get(`https://www.dnd5eapi.co${req.body.url}`)
         .then(apiRes => {
             res.send(apiRes.data)
         })

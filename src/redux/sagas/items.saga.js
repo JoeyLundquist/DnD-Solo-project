@@ -15,9 +15,9 @@ function* fetchSearchResults(action) {
 }
 
 function* fetchItemDetails(action) {
-    console.log('actionpayload', action.payload)
+    console.log('action payload', action.payload)
     try{
-        const res = yield axios.get('/api/items/details/', action.payload)
+        const res = yield axios.post(`/api/items/details`, action.payload)
         yield put({
             type: 'SET_ITEM_DETAILS',
             payload: res.data
