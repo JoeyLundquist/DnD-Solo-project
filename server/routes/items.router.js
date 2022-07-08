@@ -41,7 +41,29 @@ router.post('/details/', rejectUnauthenticated, (req, res) =>{
 
 
 router.post('/', (req, res) => {
-  // POST route code here
+    const sqlQuery = `
+        INSERT INTO characters_items
+        (character_id, item_name, api_id)
+        VALUES ($1, $2, $3)
+    `
+    const sqlParams = [
+        1,
+        req.body.name,
+        req.body.url
+    ]
+    if(!req.body.name){
+        console.log('No item selected')
+        return
+    }
+    
+    pool.query(sqlQuery, sqlParams)
+        .then(dbRes => {
+            res.sendStatus(201)
+        })
+        .catch(err => {
+            console.log('Failed to POST item to inv', err)
+        })
+
 });
 
 module.exports = router;

@@ -28,10 +28,20 @@ function* fetchItemDetails(action) {
     }
 }
 
+function* addItemToInventory(action) {
+    try{
+        yield axios.post('/api/items', action.payload)
+    }
+    catch(err) {
+        console.log('Failed to add to inv', err)
+    }
+}
+
 
 function* itemsSaga() {
-    yield takeLatest('FETCH_SEARCH_RESULTS', fetchSearchResults)
-    yield takeLatest('FETCH_ITEM_DETAILS', fetchItemDetails)
+    yield takeLatest('FETCH_SEARCH_RESULTS', fetchSearchResults);
+    yield takeLatest('FETCH_ITEM_DETAILS', fetchItemDetails);
+    yield takeLatest('ADD_ITEM_TO_INV', addItemToInventory)
 }
 
 export default itemsSaga;
