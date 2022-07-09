@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 
-const ItemSearchListItem = ({item}) => {
+const ItemsListItem = ({item}) => {
     const dispatch = useDispatch();
     const itemDetails = () => {
         dispatch({
@@ -16,4 +16,4 @@ const ItemSearchListItem = ({item}) => {
     )
 }
 
-export default ItemSearchListItem;
+export default ItemsListItem;

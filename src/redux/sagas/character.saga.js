@@ -24,9 +24,9 @@ function* addCharacter(action) {
     }
 }
 
-function* fetchCurrentCharacterInfo() {
+function* fetchCurrentCharacterInfo(action) {
     try{
-        const res = yield axios.get('/api/character/')
+        const res = yield axios.get('/api/character/select-character/' + action.payload)
         yield put({
             type: 'SET_CHARACTER_INFO',
             payload: res.data
@@ -37,12 +37,26 @@ function* fetchCurrentCharacterInfo() {
     }
 }
 
+function* fetchCharacterList() {
+    try{
+        const res = yield axios.get('/api/character/character-list')
+        yield put({
+            type: 'SET_CHARACTER_LIST',
+            payload: res.data
+        })
+    }
+    catch(err){
+        console.log('Failed to get character list', err)
+    }
+}
+
 
 
 function* characterSaga(action) {
     yield takeLatest('FETCH_RACES_AND_CLASSES', fetchRacesAndClasses);
     yield takeLatest('ADD_CHARACTER', addCharacter);
-    yield takeLatest('FETCH_CURRENT_CHARACTER_INFO', fetchCurrentCharacterInfo)
+    yield takeLatest('FETCH_CURRENT_CHARACTER_INFO', fetchCurrentCharacterInfo);
+    yield takeLatest('FETCH_CHARACTER_LIST', fetchCharacterList);
 }
 
 export default characterSaga;
