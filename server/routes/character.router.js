@@ -33,7 +33,7 @@ router.get('/create-char', rejectUnauthenticated, (req, res) => {
 });
 
 //GET ROUTE to collect current character info
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/select-character/:id', rejectUnauthenticated, (req, res) => {
   const sqlQuery = `
     SELECT *
     FROM characters
@@ -41,7 +41,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     AND user_id = $2
   `
 
-  pool.query(sqlQuery, [req.body.id, req.user.id])
+  pool.query(sqlQuery, [req.params.id, req.user.id])
     .then(dbRes => {
       if(dbRes.rows.length === 0){
         res.sendStatus(404);
@@ -91,6 +91,24 @@ router.post('/create-char', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     })
 });
+
+//Route to get the character list for the logged in user
+
+router.get('/character-list', (req, res) => {
+  const sqlQuery = `
+    SELECT id, name
+    FROM characters
+    WHERE user_id = $1
+  `
+  pool.query(sqlQuery, [req.user.id])
+    .then(dbRes => {
+      res.send(dbRes.rows)
+    })
+    .catch(err => {
+      console.log('failed to get character list', err)
+      res.sendStatus(500)
+    })
+})
 
 
 

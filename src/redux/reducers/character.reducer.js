@@ -4,6 +4,8 @@ const characterReducer = (state = {}, action) => {
             return action.payload;
         case 'SET_CHARACTER_INFO':
             return action.payload
+        case 'SET_CHARACTER_LIST':
+            return action.payload
         default:
             return state;
     }
