@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import ItemsListItem from "../ItemsListItem/ItemsListItem";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
+import { Link } from "react-router-dom";
 
 import './currentCharacterInfo.css'
 
@@ -40,6 +41,7 @@ const CurrentCharacterPage = () => {
                 <p>AC: {character.ac}</p>
             </div>
             <button onClick={fetchCharacterItems}>Items</button>
+            <Link to="available-spells">Available spells</Link>
  
             <div className="inventory-spells-list-container">
                 <div className="inventory-spells-container">

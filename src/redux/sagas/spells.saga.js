@@ -2,8 +2,9 @@ import { takeLatest, put } from "redux-saga/effects";
 import axios from "axios";
 
 function* fetchAvailableSpells(action) {
+    console.log('action payload', action.payload)
     try{
-        const res = yield axios.get('')
+        const res = yield axios.get(`/api/spells/${action.payload.class}/${action.payload.lvl}`)
     }
     catch(err){
         console.log('Failed to get available spells', err)
