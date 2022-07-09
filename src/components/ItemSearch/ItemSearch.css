@@ -1,4 +1,4 @@
-.results-container{
+.results-container, .spell-list-container{
     border: 1px solid black;
     width: 80%;
     height: 500px;
@@ -6,7 +6,7 @@
     display: flex;
 }
 
-.results-inner-container{
+.results-inner-container, .spell-list-inner-container{
     width: 50%;
     border-left: 1px solid black;
     display: inline-block;
