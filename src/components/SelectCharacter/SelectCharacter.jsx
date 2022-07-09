@@ -25,7 +25,7 @@ export const SelectCharacter = () => {
                         type:'FETCH_CURRENT_CHARACTER_INFO',
                         payload: c.id
                     })
-                    history.push('/')
+                    history.push('/current-character')
                 }} 
                 id={c.id}
                 >

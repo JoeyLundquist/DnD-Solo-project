@@ -39,8 +39,23 @@ router.post('/details/', rejectUnauthenticated, (req, res) =>{
         })
 })
 
+//Routes to fetch items in inventory
+router.get('/inventory/:id', rejectUnauthenticated, (req, res) => {
+    const sqlQuery = `
+        SELECT *
+        FROM characters_items
+        WHERE id = $1
+    `
+    pool.query(sqlQuery, [req.params.id])
+        .then(dbRes => res.send(dbRes.rows))
+        .catch(err => {
+            res.sendStatus(500)
+            console.log('Failed to get inventory', err)
+        })
+})
 
-router.post('/', (req, res) => {
+
+router.post('/', rejectUnauthenticated, (req, res) => {
     const sqlQuery = `
         INSERT INTO characters_items
         (character_id, item_name, api_id)

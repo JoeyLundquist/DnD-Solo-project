@@ -37,11 +37,24 @@ function* addItemToInventory(action) {
     }
 }
 
+function* fetchInventoryItems(action) {
+    try{
+        const res = yield axios.get('/api/items/inventory/' + action.payload)
+        yield put({
+            type: 'SET_INVENTORY',
+            payload: res.data
+        })
+    }
+    catch{
+
+    }
+}
 
 function* itemsSaga() {
     yield takeLatest('FETCH_SEARCH_RESULTS', fetchSearchResults);
     yield takeLatest('FETCH_ITEM_DETAILS', fetchItemDetails);
-    yield takeLatest('ADD_ITEM_TO_INV', addItemToInventory)
+    yield takeLatest('ADD_ITEM_TO_INV', addItemToInventory);
+    yield takeLatest('FETCH_INVENTORY_ITEMS', fetchInventoryItems)
 }
 
 export default itemsSaga;
