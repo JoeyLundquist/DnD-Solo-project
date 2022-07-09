@@ -23,6 +23,7 @@ import HomePage from '../HomePage/HomePage';
 import NewCharacter from '../NewCharacter/NewCharacter';
 import CurrentCharacterPage from '../CurrentCharacterPage/CurrentCharacterPage';
 import ItemSearch from '../ItemSearch/ItemSearch';
+import { SelectCharacter } from '../SelectCharacter/SelectCharacter';
 
 import './App.css';
 
@@ -135,6 +136,13 @@ function App() {
             path="/item-search"
           >
             <ItemSearch />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/select-character"
+          >
+            <SelectCharacter />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

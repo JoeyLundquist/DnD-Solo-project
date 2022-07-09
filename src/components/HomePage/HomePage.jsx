@@ -7,7 +7,7 @@ const HomePage = () => {
         <>
             <div className="link-container">
                 <Link to="/new-character">New Character</Link><br></br>
-                <Link>Existing Characters</Link>
+                <Link to="/select-character">Existing Characters</Link>
             </div>
         </>
     )
