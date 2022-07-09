@@ -44,7 +44,7 @@ router.get('/inventory/:id', rejectUnauthenticated, (req, res) => {
     const sqlQuery = `
         SELECT *
         FROM characters_items
-        WHERE id = $1
+        WHERE character_id = $1
     `
     pool.query(sqlQuery, [req.params.id])
         .then(dbRes => res.send(dbRes.rows))
@@ -58,7 +58,7 @@ router.get('/inventory/:id', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     const sqlQuery = `
         INSERT INTO characters_items
-        (character_id, item_name, api_id)
+        (character_id, name, url)
         VALUES ($1, $2, $3)
     `
     const sqlParams = [

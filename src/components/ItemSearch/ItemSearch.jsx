@@ -2,12 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
 import './ItemSearch.css'
-import ItemSearchListItem from '../ItemSearchListItem/ItemSearchListItem';
-import ItemSearchDetails from '../ItemSearchDetails/ItemSearchDetails';
+import ItemsListItem from '../ItemsListItem/ItemsListItem';
+import ItemsDetails from '../ItemsDetails/ItemsDetails';
 
 const ItemSearch = () => {
     const dispatch = useDispatch();
     const items = useSelector(store => store.itemSearchReducer)
+    const itemDetail = useSelector(store => store.itemDetailReducer)
 
     const [searchParams, setSearchParams] = useState('');
 
@@ -18,6 +19,15 @@ const ItemSearch = () => {
             payload: searchParams
         })
         setSearchParams('')
+    }
+    const addItemToInventory = () => {
+        dispatch({
+            type: 'ADD_ITEM_TO_INV',
+            payload: {
+                name: itemDetail.name,
+                url: itemDetail.url
+            }
+        })
     }
 
     return(
@@ -34,13 +44,20 @@ const ItemSearch = () => {
                         <h2>Results</h2>
                         <ul>
                             {items && items.map(item => (
-                               <ItemSearchListItem item={item}/>
+                               <ItemsListItem item={item}/>
                             ))}
                         </ul>
                     </div>
                     <div className="results-inner-container">
                         <h2>Details</h2>
-                        <ItemSearchDetails />
+                        <ItemsDetails />
+                        { itemDetail.name ?
+                            <div>
+                                <button onClick={addItemToInventory}>Add Item</button>
+                            </div>
+                            :
+                            <></>
+                        }
                     </div>
                 </div>
             </div>

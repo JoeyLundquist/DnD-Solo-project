@@ -1,30 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 
 
-const ItemSearchDetails = () => {
-    const dispatch = useDispatch();
+const ItemsDetails = () => {
     const itemDetail = useSelector(store => store.itemDetailReducer)
-
-    const addItemToInventory = () => {
-        dispatch({
-            type: 'ADD_ITEM_TO_INV',
-            payload: {
-                name: itemDetail.name,
-                url: itemDetail.url
-            }
-        })
-        
-    }
 
     return(
         <>
-            { itemDetail.name ?
-            <div>
-                <button onClick={addItemToInventory}>Add Item</button>
-            </div>
-            :
-            <></>
-            }
             <h2>{itemDetail && itemDetail.name}</h2>    
             {itemDetail.cost && <p>Cost: {itemDetail.cost.quantity}<span>{itemDetail.cost.unit}</span></p>}
             {itemDetail.desc && itemDetail.desc.map(i => <p>{i}</p>)}
@@ -40,9 +21,8 @@ const ItemSearchDetails = () => {
             {itemDetail.armor_category && <p>Armor Category: {itemDetail.armor_category}</p>}
             {itemDetail.armor_class && <p>Armor class base: {itemDetail.armor_class.base}</p>}
             {itemDetail.armor_class && <p>Armor class Dex Bonus: {String(itemDetail.armor_class.dex_bonus)}</p>}
-        
         </>
     )
 }
 
-export default ItemSearchDetails;
+export default ItemsDetails;

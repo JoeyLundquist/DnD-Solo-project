@@ -1,18 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import ItemsListItem from "../ItemsListItem/ItemsListItem";
+import ItemsDetails from "../ItemsDetails/ItemsDetails";
 
 import './currentCharacterInfo.css'
 
 const CurrentCharacterPage = () => {
     const dispatch = useDispatch();
     const character = useSelector(store => store.characterReducer)
-    console.log(character)
+    const inventory = useSelector(store => store.itemSearchReducer)
+    console.log('inv', inventory)
 
-    // useEffect(() => {
-    //     dispatch({
-    //         type:'FETCH_CURRENT_CHARACTER_INFO'
-    //     })    
-    // }, [])
+    const fetchCharacterItems = () => {
+        dispatch({
+            type:'FETCH_INVENTORY_ITEMS',
+            payload: character.id
+        })   
+    }
+
 
     return(
         <>
@@ -34,16 +39,21 @@ const CurrentCharacterPage = () => {
                 <p>HP: {character.hp}</p>
                 <p>AC: {character.ac}</p>
             </div>
+            <button onClick={fetchCharacterItems}>Items</button>
  
             <div className="inventory-spells-list-container">
                 <div className="inventory-spells-container">
                     <h3>Inventory</h3>
+                    <ul>
+                    {inventory.map(inv => <ItemsListItem item={inv}/>)}
+                    </ul>
                 </div>
                 <div className="inventory-spells-container">
                     <h3>Spells/Cantrips</h3>
                 </div>
                 <div className="inventory-spells-container">
                     <h3>Details</h3>
+                    <ItemsDetails />
                 </div>
             </div>
         </>

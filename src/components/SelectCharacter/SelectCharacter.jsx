@@ -23,7 +23,7 @@ export const SelectCharacter = () => {
                 onClick={() => {
                     dispatch({
                         type:'FETCH_CURRENT_CHARACTER_INFO',
-                        payload: c.id
+                        payload: c.id,
                     })
                     history.push('/current-character')
                 }} 
