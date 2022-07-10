@@ -1,4 +1,4 @@
-const spellsReducer = (state = [], action) => {
+export const spellsListReducer = (state = [], action) => {
     switch(action.type){
         case 'SET_AVAILABLE_SPELL_LIST':
             return action.payload
@@ -9,4 +9,11 @@ const spellsReducer = (state = [], action) => {
     }
 }
 
-export default spellsReducer;
+export const spellDetailReducer = (state = {}, action) => {
+    switch(action.type){
+        case 'SET_SPELL_DETAILS':
+            return action.payload
+        default:
+            return state;
+    }
+}

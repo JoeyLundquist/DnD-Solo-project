@@ -20,6 +20,7 @@ export const SelectCharacter = () => {
             <div className="select-character-list">
                 {characterList[0] && characterList.map(c => (
                 <p 
+                key={c.id}
                 onClick={() => {
                     dispatch({
                         type:'FETCH_CURRENT_CHARACTER_INFO',

@@ -30,6 +30,18 @@ router.get('/:class/:lvl', rejectUnauthenticated, async (req, res) => {
     }
 })
 
+router.post('/spell-details', rejectUnauthenticated, (req, res) => {
+    axios.get('https://www.dnd5eapi.co' + req.body.url)
+        .then(apiRes => {
+            console.log('api spell detail results', apiRes.data)
+            res.send(apiRes.data)
+        })
+        .catch(err => {
+            console.log('Failed to get spell details', err)
+            res.sendStatus(500)
+        })
+})
+
 
 
 module.exports = router;
