@@ -34,7 +34,10 @@ const AvailableSpellList = () => {
                 </div>
                 <div className="spell-list-inner-container">
                     <h2>Spell Details</h2>
-                    <SpellDetails />
+                    <button>Prepare Spell</button>
+                    <div className='detail-container'>
+                        <SpellDetails />
+                    </div>
                 </div>
             </div>
         </>

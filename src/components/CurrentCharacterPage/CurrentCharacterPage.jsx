@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import ItemsListItem from "../ItemsListItem/ItemsListItem";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
-import { Link } from "react-router-dom";
+import { SpellDetails } from "../SpellDetails/SpellDetails";
 
 import './currentCharacterInfo.css'
 
@@ -51,11 +52,14 @@ const CurrentCharacterPage = () => {
                     </ul>
                 </div>
                 <div className="inventory-spells-container">
+                <ItemsDetails />
+                </div>
+                <div className="inventory-spells-container">
                     <h3>Spells/Cantrips</h3>
                 </div>
                 <div className="inventory-spells-container">
                     <h3>Details</h3>
-                    <ItemsDetails />
+                    <SpellDetails />
                 </div>
             </div>
         </>
