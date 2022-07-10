@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import SpellListItem from '../SpellListItem/SpellListItem';
+import { SpellDetails } from '../SpellDetails/SpellDetails';
 import '../ItemSearch/ItemSearch.css'
 
 const AvailableSpellList = () => {
@@ -33,7 +34,7 @@ const AvailableSpellList = () => {
                 </div>
                 <div className="spell-list-inner-container">
                     <h2>Spell Details</h2>
-
+                    <SpellDetails />
                 </div>
             </div>
         </>
