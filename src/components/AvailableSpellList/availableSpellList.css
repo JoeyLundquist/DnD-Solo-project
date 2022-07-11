@@ -1,0 +1,16 @@
+.spell-list-inner-container{
+    width: 33.33%;
+    border-left: 1px solid black;
+    display: inline-block;
+    box-sizing: border-box;
+    overflow:scroll;
+    padding: 10px 20px;
+}
+
+.spell-list-container{
+    border: 1px solid black;
+    width: 80%;
+    height: 500px;
+    margin: 10px auto;
+    display: flex;
+}

@@ -62,7 +62,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         VALUES ($1, $2, $3)
     `
     const sqlParams = [
-        1,
+        req.body.charId,
         req.body.name,
         req.body.url
     ]

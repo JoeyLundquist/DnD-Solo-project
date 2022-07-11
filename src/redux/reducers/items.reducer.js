@@ -1,8 +1,6 @@
-const itemSearchReducer = (state = [], action) => {
+export const itemSearchReducer = (state = [], action) => {
     switch(action.type){
         case 'SET_SEARCH_RESULTS':
-            return action.payload
-        case 'SET_INVENTORY':
             return action.payload
         default:
             return state
@@ -11,4 +9,13 @@ const itemSearchReducer = (state = [], action) => {
 
 }
 
-export default itemSearchReducer;
+export const inventoryItems = (state = [], action) => {
+
+    switch(action.type){
+        case 'SET_INVENTORY':
+            return action.payload
+        default: 
+            return state;
+    }
+}
+

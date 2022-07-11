@@ -1,4 +1,4 @@
-const itemDetailReducer = (state={}, action) => {
+export const itemDetailReducer = (state={}, action) => {
     switch(action.type){
         case 'SET_ITEM_DETAILS':
             return action.payload
@@ -7,4 +7,12 @@ const itemDetailReducer = (state={}, action) => {
     }
 }
 
-export default itemDetailReducer;
+export const inventoryItemDetail = (state = {}, action) => {
+    switch(action.type){
+        case 'SET_INVENTORY_ITEM_DETAIL':
+            return action.payload;
+        default:
+            return state
+    }
+}
+

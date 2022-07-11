@@ -14,7 +14,7 @@
 
 .inventory-spells-list-container{
     /* border: 1px solid black; */
-    width: 65%;
+    width: 75%;
     margin: 10px auto;
     height: 500px;
     display: flex;

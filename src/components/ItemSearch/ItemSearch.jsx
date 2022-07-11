@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './ItemSearch.css'
 import ItemsListItem from '../ItemsListItem/ItemsListItem';
@@ -7,6 +8,7 @@ import ItemsDetails from '../ItemsDetails/ItemsDetails';
 
 const ItemSearch = () => {
     const dispatch = useDispatch();
+    const character = useSelector(store => store.characterReducer)
     const items = useSelector(store => store.itemSearchReducer)
     const itemDetail = useSelector(store => store.itemDetailReducer)
 
@@ -25,7 +27,8 @@ const ItemSearch = () => {
             type: 'ADD_ITEM_TO_INV',
             payload: {
                 name: itemDetail.name,
-                url: itemDetail.url
+                url: itemDetail.url,
+                charId: character.id
             }
         })
     }
@@ -33,6 +36,7 @@ const ItemSearch = () => {
     return(
         <>
             <div className="container">
+                <Link to='/current-character'>Character sheet</Link>
                 <div className="search-input-container">
                     <form onSubmit={onSearch}>
                         <input type="text" placeholder="Item" value={searchParams} onChange={e => setSearchParams(e.target.value)} />
@@ -50,7 +54,7 @@ const ItemSearch = () => {
                     </div>
                     <div className="results-inner-container">
                         <h2>Details</h2>
-                        <ItemsDetails />
+                        <ItemsDetails page={'search'}/>
                         { itemDetail.name ?
                             <div>
                                 <button onClick={addItemToInventory}>Add Item</button>

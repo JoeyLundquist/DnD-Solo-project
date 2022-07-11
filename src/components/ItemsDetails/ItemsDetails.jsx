@@ -1,14 +1,20 @@
 import { useSelector, useDispatch } from "react-redux";
 
 
-const ItemsDetails = () => {
-    const itemDetail = useSelector(store => store.itemDetailReducer)
+const ItemsDetails = ({page}) => {
+    let itemDetail =useSelector(store => store.itemDetailReducer)
+    // if(page === 'current'){
+    //     itemDetail = useSelector(store => store.inventoryItemDetail)
+    // }
+    // else{
+    //     itemDetail = useSelector(store => store.itemDetailReducer)
+    // }
 
     return(
         <>
             <h2>{itemDetail && itemDetail.name}</h2>    
             {itemDetail.cost && <p>Cost: {itemDetail.cost.quantity}<span>{itemDetail.cost.unit}</span></p>}
-            {itemDetail.desc && itemDetail.desc.map(i => <p>{i}</p>)}
+            {itemDetail.desc && itemDetail.desc.map((l, i )=><p key={i}>{l}</p>)}
             {itemDetail.range && <p>Normal Range: {itemDetail.range.normal}ft.</p>}
             {itemDetail.range && <p>Long Range: {itemDetail.range.long}ft.</p>}
             {itemDetail.damage && <p>Damage Dice: {itemDetail.damage.damage_dice}</p>}

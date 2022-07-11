@@ -24,6 +24,7 @@ import NewCharacter from '../NewCharacter/NewCharacter';
 import CurrentCharacterPage from '../CurrentCharacterPage/CurrentCharacterPage';
 import ItemSearch from '../ItemSearch/ItemSearch';
 import { SelectCharacter } from '../SelectCharacter/SelectCharacter';
+import AvailableSpellList from '../AvailableSpellList/AvailableSpellList';
 
 import './App.css';
 
@@ -143,6 +144,12 @@ function App() {
             path="/select-character"
           >
             <SelectCharacter />
+          </ProtectedRoute>
+          <ProtectedRoute 
+            exact
+            path='/available-spells'
+          >
+            <AvailableSpellList />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

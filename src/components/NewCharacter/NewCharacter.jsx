@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import AttributeDropdown from "../AttributeDropdown/AttributeDropdown";
 
@@ -8,6 +9,7 @@ import './NewCharacter.css'
 
 const NewCharacter = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     
     const racesAndClasses = useSelector(store => store.characterReducer)
 
@@ -55,11 +57,14 @@ const NewCharacter = () => {
             charisma: charisma,
             level: characterLevel
         });
-
-        dispatch({
-            type: 'ADD_CHARACTER',
-            payload: characterInfo
-        })
+        // setTimeout(() => {
+            dispatch({
+                    type: 'ADD_CHARACTER',
+                    payload: characterInfo
+                })
+                history.push('/select-character')
+        // }, 500)
+   
     }   
 
    
@@ -131,7 +136,8 @@ const NewCharacter = () => {
                         wisdom: wisdom, 
                         constitution: constitution, 
                         charisma: charisma,
-                        level: characterLevel})}
+                        level: characterLevel
+                    })}
                     />
                 </div>
                 <button onClick={() => onSubmit()}>Check me!!</button>
