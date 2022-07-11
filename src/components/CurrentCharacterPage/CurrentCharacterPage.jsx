@@ -5,6 +5,7 @@ import ItemsListItem from "../ItemsListItem/ItemsListItem";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
 import { SpellDetails } from "../SpellDetails/SpellDetails";
 import SpellListItem from "../SpellListItem/SpellListItem";
+import MoniesManager from "../MoniesManager/MoniesManager";
 
 import './currentCharacterInfo.css'
 
@@ -53,6 +54,7 @@ const CurrentCharacterPage = () => {
                 <p>HP: {character.hp}</p>
                 <p>AC: {character.ac}</p>
             </div>
+            <MoniesManager /><br></br>
             <Link to="available-spells">Manage spells</Link><br></br>
             <Link to="item-search">Search Items</Link>
  

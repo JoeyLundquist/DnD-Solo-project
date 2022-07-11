@@ -47,7 +47,8 @@ function* addSpellToPreparedList(action) {
     try{
         const res = yield axios.post('/api/spells/prepared', action.payload)
         yield put({
-            type: 'FETCH_PREPARED_SPELLS'
+            type: 'FETCH_PREPARED_SPELLS',
+            payload: action.payload.charId
         })
     }
     catch(err){

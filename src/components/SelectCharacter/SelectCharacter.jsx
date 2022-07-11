@@ -10,9 +10,11 @@ export const SelectCharacter = () => {
     console.log(characterList)
 
     useEffect(() => {
-        dispatch({
-            type: 'FETCH_CHARACTER_LIST'
-        })
+        setTimeout(() => {
+            dispatch({
+                type: 'FETCH_CHARACTER_LIST'
+            })
+        }, 500)
     }, [])
     
 

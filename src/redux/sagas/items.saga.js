@@ -45,8 +45,17 @@ function* fetchInventoryItems(action) {
             payload: res.data
         })
     }
-    catch{
+    catch(err){
+        console.log('Failed to fetch INV', err)
+    }
+}
 
+function* updateMonies(action) {
+    try{
+
+    }
+    catch{
+        
     }
 }
 
@@ -55,6 +64,7 @@ function* itemsSaga() {
     yield takeLatest('FETCH_ITEM_DETAILS', fetchItemDetails);
     yield takeLatest('ADD_ITEM_TO_INV', addItemToInventory);
     yield takeLatest('FETCH_INVENTORY_ITEMS', fetchInventoryItems)
+    yield takeLatest('UPDATE_MONIES', updateMonies)
 }
 
 export default itemsSaga;
