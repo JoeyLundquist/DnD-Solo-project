@@ -17,3 +17,12 @@ export const spellDetailReducer = (state = {}, action) => {
             return state;
     }
 }
+
+export const preparedSpellsList = (state = [], action) => {
+    switch(action.type){
+        case 'SET_PREPARED_SPELLS':
+            return action.payload
+        default: 
+            return state;
+    }
+}

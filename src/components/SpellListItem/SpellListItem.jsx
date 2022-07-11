@@ -1,7 +1,9 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
-const SpellListItem = ({spell}) => {
+const SpellListItem = ({spell, page}) => {
     const dispatch = useDispatch();
+
+    const character = useSelector(store => store.characterReducer)
 
     const fetchSpellDetails = () => {
         dispatch({
@@ -10,10 +12,27 @@ const SpellListItem = ({spell}) => {
         })
     }
 
+    let editPrepared;
+    if(page === 'prepared'){
+        editPrepared = true
+    }
+
+    const removePreparedSpell = () => {
+        dispatch({
+            type: 'REMOVE_PREPARED_SPELL',
+            payload: {
+                id: spell.id,
+                charId: character.id
+
+            }
+        })
+    }
+   
+
 
     return( 
         <>
-            <li key={spell.url}><p onClick={fetchSpellDetails}>{spell.name}</p></li>
+            <li key={spell.url}><p onClick={fetchSpellDetails}>{spell.name}</p></li>{editPrepared ? <button onClick={removePreparedSpell}>Un-prepare spell</button> : <></>}
         </>
     )
 }

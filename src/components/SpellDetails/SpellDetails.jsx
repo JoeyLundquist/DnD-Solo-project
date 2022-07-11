@@ -15,7 +15,7 @@ export const SpellDetails = () => {
     return( 
         <>
             <h4>{spell.name}</h4>
-            {spell.desc && <p>Description: <br></br>{spell.desc.map(d => d)}</p>}
+            {spell.desc && <p>Description: <br></br>{spell.desc.map((d, i) => d)}</p>}
             {spell.range && <p>Range: {spell.range}</p>}
             {spell.components && <p>Components: {spell.components && spell.components.map(c => c)}</p>}
             {spell.material && <p>Material: {spell.material}</p>}
@@ -26,7 +26,7 @@ export const SpellDetails = () => {
             {spell.level && <p>Spell Level: {spell.level}</p>}
             {spell.attack_type && <p>Spell Attack Type: {spell.attack_type}</p>}
             {spellDamageDiceByLvl && <p>Damage Dice:</p>}
-            {spellDamageDiceByLvl && spellDamageDiceByLvl.map((d, i) => <p>{i + spell.level}: {d}</p>)}
+            {spellDamageDiceByLvl && spellDamageDiceByLvl.map((d, i) => <p key={i}>{i + spell.level}: {d}</p>)}
             {healDiceByLvl && <p>Heal Dice: </p>}
             {healDiceByLvl && healDiceByLvl.map((dice, i )=> <p>{i + spell.level}: {dice}</p>)}
             {spell.damage && <p>Damage Type:{spell.damage.damage_type.name}</p>}
