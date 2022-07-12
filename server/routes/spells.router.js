@@ -11,16 +11,16 @@ router.get('/available/:class/:lvl', rejectUnauthenticated, async (req, res) => 
     const charLvl = req.params.lvl
     let availableSpells = [];
     try{
-    for(let i = 1; i<=charLvl; i++){
-        await axios.get(`https://www.dnd5eapi.co/api/classes/${charClass}/levels/${i}/spells`)
-            .then(apiRes => {
-                // console.log('spells api res', apiRes.data)
-                apiRes.data.results.map(spell => availableSpells.push(spell))
-            })
-            .catch(err => {
-                console.log('Failed to get spells from API', err)
-                res.sendStatus(500)
-            })
+        for(let i = 1; i<=charLvl; i++){
+            await axios.get(`https://www.dnd5eapi.co/api/classes/${charClass}/levels/${i}/spells`)
+                .then(apiRes => {
+                    // console.log('spells api res', apiRes.data)
+                    apiRes.data.results.map(spell => availableSpells.push(spell))
+                })
+                .catch(err => {
+                    console.log('Failed to get spells from API', err)
+                    res.sendStatus(500)
+                })
     }
     // console.log('Available spells',availableSpells)
     res.send(availableSpells)
@@ -33,7 +33,7 @@ router.get('/available/:class/:lvl', rejectUnauthenticated, async (req, res) => 
 router.post('/spell-details', rejectUnauthenticated, (req, res) => {
     axios.get('https://www.dnd5eapi.co' + req.body.url)
         .then(apiRes => {
-            console.log('api spell detail results', apiRes.data)
+            // console.log('api spell detail results', apiRes.data)
             res.send(apiRes.data)
         })
         .catch(err => {

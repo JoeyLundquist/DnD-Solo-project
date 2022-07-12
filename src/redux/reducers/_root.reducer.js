@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import {characterReducer, characterList} from './character.reducer';
-import {itemSearchReducer, inventoryItems} from './items.reducer';
+import {itemSearchReducer, inventoryItems, moniesReducer} from './items.reducer';
 import {itemDetailReducer, inventoryItemDetail} from './itemDetail.reducer';
 import {spellsListReducer, spellDetailReducer, preparedSpellsList} from './spells.reducer';
 
@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
   inventoryItems,
   characterList,
   inventoryItemDetail,
+  moniesReducer,
 });
 
 export default rootReducer;

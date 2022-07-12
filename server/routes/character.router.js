@@ -110,6 +110,27 @@ router.get('/character-list', (req, res) => {
     })
 })
 
+router.put(`/monies/:charId`, rejectUnauthenticated, (req, res) => {
+  const sqlQuery = `
+    UPDATE characters
+    SET copper_pieces = $1, silver_pieces = $2, electrum_pieces = $3, gold_pieces = $4, platinum_pieces = $5
+    WHERE id = $6
+  `
+  const sqlParams = [
+    req.body.copper,
+    req.body.silver,
+    req.body.electrum,
+    req.body.gold,
+    req.body.platinum,
+    req.params.charId
+  ]
 
+  pool.query(sqlQuery, sqlParams)
+    .then(dbRes => res.sendStatus(200))
+    .catch(err => {
+      console.log('Failed to update monies', err)
+      res.sendStatus(500) 
+    })
+})
 
 module.exports = router;

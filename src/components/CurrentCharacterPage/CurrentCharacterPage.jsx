@@ -17,18 +17,18 @@ const CurrentCharacterPage = () => {
     console.log('inv', inventory)
 
     useEffect(() => {
-        setTimeout(() => {
-            dispatch({
-                type:'FETCH_INVENTORY_ITEMS',
-                payload: character.id
-            })
-        }, 1000)
-        setTimeout(() => {
-            dispatch({
-                type: 'FETCH_PREPARED_SPELLS',
-                payload: character.id
-            }) 
-        }, 1000)
+        // setTimeout(() => {
+        //     dispatch({
+        //         type:'FETCH_INVENTORY_ITEMS',
+        //         payload: character.id
+        //     })
+        // }, 1000)
+        // setTimeout(() => {
+        //     dispatch({
+        //         type: 'FETCH_PREPARED_SPELLS',
+        //         payload: character.id
+        //     }) 
+        // }, 1000)
      
     }, [])
 

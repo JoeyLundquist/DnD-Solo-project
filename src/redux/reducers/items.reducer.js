@@ -19,3 +19,11 @@ export const inventoryItems = (state = [], action) => {
     }
 }
 
+export const moniesReducer = (state = [], action) => {
+    switch(action.type){
+        case 'SET_MONIES':
+            return action.payload
+        default:
+            return state;
+    }
+}
