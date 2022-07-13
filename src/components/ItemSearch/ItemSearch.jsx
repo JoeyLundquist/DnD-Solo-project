@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 
 import './ItemSearch.css'
 import ItemsListItem from '../ItemsListItem/ItemsListItem';
@@ -13,6 +14,12 @@ const ItemSearch = () => {
     const itemDetail = useSelector(store => store.itemDetailReducer)
 
     const [searchParams, setSearchParams] = useState('');
+
+    useEffect(() => {
+        dispatch({
+            type: 'CLEAR_ITEM_DETAILS'
+        })
+    }, [])
 
     const onSearch = (e) => {
         e.preventDefault();
@@ -36,7 +43,7 @@ const ItemSearch = () => {
     return(
         <>
             <div className="container">
-                <Link to='/current-character'>Character sheet</Link>
+                <Link to={`/current-character/${character.id}/`}>Character sheet</Link>
                 <div className="search-input-container">
                     <form onSubmit={onSearch}>
                         <input type="text" placeholder="Item" value={searchParams} onChange={e => setSearchParams(e.target.value)} />

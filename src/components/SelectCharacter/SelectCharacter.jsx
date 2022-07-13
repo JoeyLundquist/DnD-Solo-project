@@ -25,18 +25,13 @@ export const SelectCharacter = () => {
                 <p 
                 key={c.id}
                 onClick={() => {
-                    dispatch({
-                        type:'FETCH_CURRENT_CHARACTER_INFO',
-                        payload: c.id,
-                    })
-                    setTimeout(() => {
                         dispatch({
-                            type:'FETCH_INVENTORY_ITEMS',
-                            payload: character.id
+                            type:'FETCH_CURRENT_CHARACTER_INFO',
+                            payload: c.id,
                         })
-                        history.push('/current-character')
-                    }, 500)
-                }} 
+                  
+                    history.push(`/current-character/${c.id}/`)}} 
+
                 id={c.id}
                 >
                     {c.name}

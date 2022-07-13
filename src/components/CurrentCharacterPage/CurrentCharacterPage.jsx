@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ItemsListItem from "../ItemsListItem/ItemsListItem";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
 import { SpellDetails } from "../SpellDetails/SpellDetails";
@@ -13,24 +13,29 @@ const CurrentCharacterPage = () => {
     const dispatch = useDispatch();
     const character = useSelector(store => store.characterReducer)
     const inventory = useSelector(store => store.inventoryItems)
+    const itemDetail = useSelector(store => store.itemDetailReducer)
     const preparedSpells = useSelector(store => store.preparedSpellsList)
     console.log('inv', inventory)
+    const {id} = useParams()
 
     useEffect(() => {
-        // setTimeout(() => {
-        //     dispatch({
-        //         type:'FETCH_INVENTORY_ITEMS',
-        //         payload: character.id
-        //     })
-        // }, 1000)
-        // setTimeout(() => {
-        //     dispatch({
-        //         type: 'FETCH_PREPARED_SPELLS',
-        //         payload: character.id
-        //     }) 
-        // }, 1000)
+        dispatch({
+            type: 'FETCH_CURRENT_CHARACTER_INFO',
+            payload: id
+        })
      
-    }, [])
+    }, [id])
+
+    const removeItemFromInventory = () => {
+        dispatch({
+            type: 'REMOVE_ITEM_FROM_INVENTORY',
+            payload: {
+                name: itemDetail.name,
+                url: itemDetail.url,
+                charId: character.id
+            }
+        })
+    }
 
 
 
@@ -55,8 +60,8 @@ const CurrentCharacterPage = () => {
                 <p>AC: {character.ac}</p>
             </div>
             <MoniesManager /><br></br>
-            <Link to="available-spells">Manage spells</Link><br></br>
-            <Link to="item-search">Search Items</Link>
+            <Link to={`/current-character/available-spells/${character.id}`}>Manage spells</Link><br></br>
+            <Link to={`/current-character/item-search/${character.id}`}>Search Items</Link>
  
             <div className="inventory-spells-list-container">
                 <div className="inventory-spells-container">
@@ -68,6 +73,7 @@ const CurrentCharacterPage = () => {
                 <div className="inventory-spells-container">
                     <h3>Items Details</h3>
                     <ItemsDetails page={'current'}/>
+                    <button onClick={removeItemFromInventory}>Remove from Inventory</button>
                 </div>
                 <div className="inventory-spells-container">
                     <h3>Spells/Cantrips</h3>
