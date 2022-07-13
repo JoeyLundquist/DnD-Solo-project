@@ -13,22 +13,22 @@ const NewCharacter = () => {
     
     const racesAndClasses = useSelector(store => store.characterReducer)
 
-    const [characterInfo, setCharacterInfo] = useState({
-        name: '',
-        level: '',
-        raceName: '',
-        className: '',
-        classLevel: 0,
-        strength: 0,
-        intelligence: 0,
-        dexterity: 0,
-        wisdom: 0,
-        constitution: 0,
-        charisma: 0,
-        hp: '',
-        speed: '',
-        ac: ''
-    })
+    // const [characterInfo, setCharacterInfo] = useState({
+    //     name: '',
+    //     level: '',
+    //     raceName: '',
+    //     className: '',
+    //     classLevel: 0,
+    //     strength: 0,
+    //     intelligence: 0,
+    //     dexterity: 0,
+    //     wisdom: 0,
+    //     constitution: 0,
+    //     charisma: 0,
+    //     hp: '',
+    //     speed: '',
+    //     ac: ''
+    // })
 
     const [strength, setStrength] = useState(0)
     const [dexterity, setDexterity] = useState(0)
@@ -37,6 +37,15 @@ const NewCharacter = () => {
     const [constitution, setConstitution] = useState(0)
     const [charisma, setCharisma] = useState(0)
     const [characterLevel, setCharacterLevel] = useState(0)
+    const [character, setCharacter] = useState({
+        strength,
+        dexterity,
+        intelligence,
+        wisdom,
+        constitution, 
+        charisma,
+        characterLevel
+    })
 
     useEffect(() => {
         dispatch({
@@ -60,7 +69,7 @@ const NewCharacter = () => {
         // setTimeout(() => {
             dispatch({
                     type: 'ADD_CHARACTER',
-                    payload: characterInfo
+                    payload: character
                 })
                 history.push('/select-character')
         // }, 500)

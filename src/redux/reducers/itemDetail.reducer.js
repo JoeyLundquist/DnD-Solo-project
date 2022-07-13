@@ -2,6 +2,8 @@ export const itemDetailReducer = (state={}, action) => {
     switch(action.type){
         case 'SET_ITEM_DETAILS':
             return action.payload
+        case 'CLEAR_ITEM_DETAILS': 
+            return {}
         default: 
             return state
     }

@@ -55,7 +55,14 @@ function* fetchInventoryItems(action) {
 }
 
 
-
+function* removeItemFromInventory(action) {
+    try{
+        yield axios.delete('/api/items/remove/inventory/' + action.payload.charId)
+    }
+    catch(err){
+        console.log('Failed to remove item from INV', err)
+    }
+}
 
 
 function* itemsSaga() {
@@ -63,6 +70,7 @@ function* itemsSaga() {
     yield takeLatest('FETCH_ITEM_DETAILS', fetchItemDetails);
     yield takeLatest('ADD_ITEM_TO_INV', addItemToInventory);
     yield takeLatest('FETCH_INVENTORY_ITEMS', fetchInventoryItems)
+    yield takeLatest('REMOVE_ITEM_FROM_INVENTORY', removeItemFromInventory)
 }
 
 export default itemsSaga;

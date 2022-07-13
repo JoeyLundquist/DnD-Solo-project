@@ -13,6 +13,7 @@ const CurrentCharacterPage = () => {
     const dispatch = useDispatch();
     const character = useSelector(store => store.characterReducer)
     const inventory = useSelector(store => store.inventoryItems)
+    const itemDetail = useSelector(store => store.itemDetailReducer)
     const preparedSpells = useSelector(store => store.preparedSpellsList)
     console.log('inv', inventory)
     const {id} = useParams()
@@ -24,6 +25,17 @@ const CurrentCharacterPage = () => {
         })
      
     }, [id])
+
+    const removeItemFromInventory = () => {
+        dispatch({
+            type: 'REMOVE_ITEM_FROM_INVENTORY',
+            payload: {
+                name: itemDetail.name,
+                url: itemDetail.url,
+                charId: character.id
+            }
+        })
+    }
 
 
 
@@ -61,6 +73,7 @@ const CurrentCharacterPage = () => {
                 <div className="inventory-spells-container">
                     <h3>Items Details</h3>
                     <ItemsDetails page={'current'}/>
+                    <button onClick={removeItemFromInventory}>Remove from Inventory</button>
                 </div>
                 <div className="inventory-spells-container">
                     <h3>Spells/Cantrips</h3>
