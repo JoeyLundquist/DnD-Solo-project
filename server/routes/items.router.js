@@ -81,4 +81,40 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 });
 
+router.delete('/remove/inventory/:charId/:name', rejectUnauthenticated, (req, res) => {
+    let itemId;
+    const sqlQuery = `
+        SELECT * 
+        FROM characters_items
+        WHERE character_id = $1
+        AND name = $2
+        LIMIT 1
+    `
+    console.log('reqbody', req.body)
+    pool.query(sqlQuery, [req.params.charId, req.params.name])
+        .then(dbRes => {
+            console.log(dbRes.rows)
+            const sqlQuery = `
+                DELETE FROM characters_items
+                WHERE id = $1
+                RETURNING *
+            `
+            pool.query(sqlQuery, [dbRes.rows[0].id])
+                .then(dbRes1 => {
+                    if(dbRes1.rows.length === 0){
+                        res.sendStatus(404)
+                    }
+                    res.sendStatus(200)
+                })
+                .catch(err => {
+                    console.log('failed to delete item insdie of nested pool', err)
+                    res.sendStatus(500)
+                })
+        })
+        .catch(err => {
+            console.log('failed to delete items', err)
+            res.sendStatus(500)
+        })
+})
+
 module.exports = router;
