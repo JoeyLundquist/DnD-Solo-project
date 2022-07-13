@@ -6,6 +6,8 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
+let currentCharacter;
+
 
 router.get('/create-char', rejectUnauthenticated, (req, res) => {
   let racesAndClasses = {
@@ -34,6 +36,11 @@ router.get('/create-char', rejectUnauthenticated, (req, res) => {
 
 //GET ROUTE to collect current character info
 router.get('/select-character/:id', rejectUnauthenticated, (req, res) => {
+  if(req.params.id){
+    currentCharacter = req.params.id
+  }
+  
+
   const sqlQuery = `
     SELECT *
     FROM characters
@@ -41,7 +48,7 @@ router.get('/select-character/:id', rejectUnauthenticated, (req, res) => {
     AND user_id = $2
   `
 
-  pool.query(sqlQuery, [req.params.id, req.user.id])
+  pool.query(sqlQuery, [currentCharacter, req.user.id])
     .then(dbRes => {
       if(dbRes.rows.length === 0){
         res.sendStatus(404);

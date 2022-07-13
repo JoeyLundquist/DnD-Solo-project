@@ -127,14 +127,14 @@ function App() {
           </Route>
           <ProtectedRoute
             exact
-            path="/current-character"
+            path="/current-character/:id"
           >
             <CurrentCharacterPage />
           </ProtectedRoute>
           
           <ProtectedRoute
             exact
-            path="/item-search"
+            path="/current-character/item-search/:id"
           >
             <ItemSearch />
           </ProtectedRoute>
@@ -147,7 +147,7 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute 
             exact
-            path='/available-spells'
+            path='/current-character/available-spells/:id'
           >
             <AvailableSpellList />
           </ProtectedRoute>

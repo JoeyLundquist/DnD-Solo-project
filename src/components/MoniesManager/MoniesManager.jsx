@@ -9,12 +9,6 @@ const MoniesManager = () => {
     const monies = useSelector(store => store.characterReducer);
 
     const [editMode, setEditMode] = useState(false)
-    const [copper, setCopper] = useState(monies.copper_pieces)
-    const [silver, setSilver] = useState(monies.silver_pieces)
-    const [electrum, setElectrum] = useState(monies.electrum_pieces)
-    const [gold, setGold] = useState(monies.gold_pieces)
-    const [platinum, setPlatinum] = useState(monies.platinum_pieces)
-    
 
 
     const updateMonies = (e) => {

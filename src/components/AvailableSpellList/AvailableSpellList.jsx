@@ -1,14 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import SpellListItem from '../SpellListItem/SpellListItem';
 import { SpellDetails } from '../SpellDetails/SpellDetails';
 import '../ItemSearch/ItemSearch.css'
 import './availableSpellList.css'
 
+
 const AvailableSpellList = () => {
     const dispatch = useDispatch();
+
+    const {id} = useParams();
 
     const availableSpells = useSelector(store => store.spellsListReducer)
     const spellDetails = useSelector(store => store.spellDetailReducer)
@@ -20,12 +23,12 @@ const AvailableSpellList = () => {
     useEffect(() => {
     
         dispatch({
-            type:'FETCH_AVAILABLE_SPELLS',
-            payload: characterClassAndLvl
+            type:'FETCH_CURRENT_CHARACTER_INFO',
+            payload: id
         })
         
             
-    }, [])
+    }, [id])
 
     const prepareSpell = () => {
         dispatch({
@@ -42,7 +45,7 @@ const AvailableSpellList = () => {
     return (
         <>
             <h2>Available Spells</h2>
-            <Link to='/current-character'>Character Sheet</Link>
+            <Link to={`/current-character/${id}/`} >Character Sheet</Link>
             <div className="spell-list-container">
                 <div className="spell-list-inner-container">
                 <h2>Available Spells</h2>

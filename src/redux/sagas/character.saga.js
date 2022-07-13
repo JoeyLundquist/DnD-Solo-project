@@ -34,6 +34,7 @@ function* fetchCurrentCharacterInfo(action) {
         yield put({type: 'FETCH_INVENTORY_ITEMS', payload: res.data.id})
         yield put({type: 'FETCH_PREPARED_SPELLS', payload: res.data.id})
         yield put({type: 'FETCH_MONIES', payload: res.data.id})
+        yield put({type: 'FETCH_AVAILABLE_SPELLS', payload: {class: res.data.class, lvl: res.data.class_lvl}})
     }
     catch(err){
         console.log('Failed to GET current character info', err)

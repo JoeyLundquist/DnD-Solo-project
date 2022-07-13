@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ItemsListItem from "../ItemsListItem/ItemsListItem";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
 import { SpellDetails } from "../SpellDetails/SpellDetails";
@@ -15,22 +15,15 @@ const CurrentCharacterPage = () => {
     const inventory = useSelector(store => store.inventoryItems)
     const preparedSpells = useSelector(store => store.preparedSpellsList)
     console.log('inv', inventory)
+    const {id} = useParams()
 
     useEffect(() => {
-        // setTimeout(() => {
-        //     dispatch({
-        //         type:'FETCH_INVENTORY_ITEMS',
-        //         payload: character.id
-        //     })
-        // }, 1000)
-        // setTimeout(() => {
-        //     dispatch({
-        //         type: 'FETCH_PREPARED_SPELLS',
-        //         payload: character.id
-        //     }) 
-        // }, 1000)
+        dispatch({
+            type: 'FETCH_CURRENT_CHARACTER_INFO',
+            payload: id
+        })
      
-    }, [])
+    }, [id])
 
 
 
@@ -55,8 +48,8 @@ const CurrentCharacterPage = () => {
                 <p>AC: {character.ac}</p>
             </div>
             <MoniesManager /><br></br>
-            <Link to="available-spells">Manage spells</Link><br></br>
-            <Link to="item-search">Search Items</Link>
+            <Link to={`/current-character/available-spells/${character.id}`}>Manage spells</Link><br></br>
+            <Link to={`/current-character/item-search/${character.id}`}>Search Items</Link>
  
             <div className="inventory-spells-list-container">
                 <div className="inventory-spells-container">
