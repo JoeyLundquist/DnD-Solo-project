@@ -1,0 +1,27 @@
+.monies-manager-container{
+    display: flex;
+}
+
+.monies-count {
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+    margin: 5px;
+    text-align: center;
+}
+
+.monies-updater-ui{
+    border: 1px solid black;
+    width: 100%;
+    height: 40px;
+}
+
+.monies-update-input{
+    width:50%;
+    height: 30px;
+}
+
+.monies-updating-buttons{
+    width: 20px;
+    height: 20px;
+}

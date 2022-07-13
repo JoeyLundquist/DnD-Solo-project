@@ -31,6 +31,9 @@ function* fetchCurrentCharacterInfo(action) {
             type: 'SET_CHARACTER_INFO',
             payload: res.data
         })
+        yield put({type: 'FETCH_INVENTORY_ITEMS', payload: res.data.id})
+        yield put({type: 'FETCH_PREPARED_SPELLS', payload: res.data.id})
+        yield put({type: 'FETCH_MONIES', payload: res.data.id})
     }
     catch(err){
         console.log('Failed to GET current character info', err)
@@ -50,6 +53,19 @@ function* fetchCharacterList() {
     }
 }
 
+function* updateMonies(action) {
+    try{
+        const res = yield axios.put('/api/character/monies/'+ action.payload.charId, action.payload)
+        yield put({
+            type: 'FETCH_CURRENT_CHARACTER_INFO', 
+            payload: action.payload.charId
+        })
+    }
+    catch(err){
+        console.log('Failed to update monies', err)
+    }
+}
+
 
 
 function* characterSaga(action) {
@@ -57,6 +73,8 @@ function* characterSaga(action) {
     yield takeLatest('ADD_CHARACTER', addCharacter);
     yield takeLatest('FETCH_CURRENT_CHARACTER_INFO', fetchCurrentCharacterInfo);
     yield takeLatest('FETCH_CHARACTER_LIST', fetchCharacterList);
+    yield takeLatest('UPDATE_MONIES', updateMonies);
+
 }
 
 export default characterSaga;
