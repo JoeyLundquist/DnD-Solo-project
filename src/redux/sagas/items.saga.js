@@ -57,7 +57,11 @@ function* fetchInventoryItems(action) {
 
 function* removeItemFromInventory(action) {
     try{
-        yield axios.delete('/api/items/remove/inventory/' + action.payload.charId)
+        yield axios.delete(`/api/items/remove/inventory/${action.payload.charId}/${action.payload.name}`)
+        yield put ({
+            type: 'FETCH_INVENTORY_ITEMS',
+            payload: action.payload.charId
+        })
     }
     catch(err){
         console.log('Failed to remove item from INV', err)
