@@ -32,7 +32,7 @@ export const SelectCharacter = () => {
     return(
         <>
             <div className="select-character-list">
-                <Stack spacing={2} alignItems="flex-start">
+                <Stack spacing={10} alignItems="flex-start" >
                 {characterList[0] && characterList.map(c => (
                 <Item 
                 key={c.id}

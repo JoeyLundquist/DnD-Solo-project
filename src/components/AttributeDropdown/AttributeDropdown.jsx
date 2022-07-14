@@ -1,35 +1,40 @@
 import './attributeDropdown.css'
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+
 
 const AttributeDropdown = ({attribute, setAttribute, setInfo}) => {
 
     return(
         <>
         <div className="attribute-dropdown" onChange={(e) => setAttribute(e.target.value)} >
-            <label>{attribute}</label><br></br>
-            <select>
-                <option value="0">...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-            </select>
+            <InputLabel id='attribute-label'>{attribute}</InputLabel>
+            <Select labelId='attribute-label' value="0">
+                <MenuItem value="0">...</MenuItem>
+                <MenuItem value="1">1</MenuItem>
+                <MenuItem value="2">2</MenuItem>
+                <MenuItem value="3">3</MenuItem>
+                <MenuItem value="4">4</MenuItem>
+                <MenuItem value="5">5</MenuItem>
+                <MenuItem value="6">6</MenuItem>
+                <MenuItem value="7">7</MenuItem>
+                <MenuItem value="8">8</MenuItem>
+                <MenuItem value="9">9</MenuItem>
+                <MenuItem value="10">10</MenuItem>
+                <MenuItem value="11">11</MenuItem>
+                <MenuItem value="12">12</MenuItem>
+                <MenuItem value="13">13</MenuItem>
+                <MenuItem value="14">14</MenuItem>
+                <MenuItem value="15">15</MenuItem>
+                <MenuItem value="16">16</MenuItem>
+                <MenuItem value="17">17</MenuItem>
+                <MenuItem value="18">18</MenuItem>
+                <MenuItem value="19">19</MenuItem>
+                <MenuItem value="20">20</MenuItem>
+            </Select>
         </div>
+
         </>
     )
 }

@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux"
+import './itemListItem.css'
 
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
@@ -12,6 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  width: 250,
 }));
 
 const ItemsListItem = ({item}) => {
@@ -26,7 +28,7 @@ const ItemsListItem = ({item}) => {
     return(
         <div>
             <Stack spacing={2} alignItems="flex-start">
-                <Item onClick={itemDetails}><Button>{item.name}</Button></Item>
+                <Item sx={{m:1}} className="item-list-item" onClick={itemDetails}><Button>{item.name}</Button></Item>
             </Stack>
         </div>
     )

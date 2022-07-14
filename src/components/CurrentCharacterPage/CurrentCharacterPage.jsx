@@ -6,6 +6,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
 
 import ItemsListItem from "../ItemsListItem/ItemsListItem";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
@@ -59,14 +61,13 @@ const CurrentCharacterPage = () => {
             </div>
            
             <MoniesManager /><br></br>
-            <Link to={`/current-character/available-spells/${character.id}`}>Manage spells</Link><br></br>
-            <Link to={`/current-character/item-search/${character.id}`}>Search Items</Link>
+           
 
             <Grid container spacing={2}>
             <div className="inventory-spells-list-container">
                 <Grid className="inventory-spells-container" item xs={4}>
                 {/* <div className="inventory-spells-container"> */}
-                    <h3>Inventory</h3>
+                    <h3>Inventory <Link to={`/current-character/item-search/${character.id}`}><Button>Search Items</Button></Link></h3>
                     <ul>
                     {inventory.map(inv => <ItemsListItem item={inv}/>)}
                     </ul>
@@ -76,12 +77,12 @@ const CurrentCharacterPage = () => {
                 {/* <div className="inventory-spells-container"> */}
                     <h3>Items Details</h3>
                     <ItemsDetails page={'current'}/>
-                    <button onClick={removeItemFromInventory}>Remove from Inventory</button>
+                    <Button onClick={removeItemFromInventory}>Remove from Inventory</Button>
                 {/* </div> */}
                 </Grid>
                 <Grid className="inventory-spells-container" item xs={4}>
                 {/* <div className="inventory-spells-container"> */}
-                    <h3>Spells/Cantrips</h3>
+                    <h3>Spells/Cantrips <Link to={`/current-character/available-spells/${character.id}`}><Button>Manage spells</Button></Link><br></br></h3>
                     <ul>
                         {preparedSpells.map(spells => <SpellListItem spell={spells}/>)}
                     </ul>
