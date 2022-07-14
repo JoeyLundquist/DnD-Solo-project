@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import './ItemSearch.css'
 import ItemsListItem from '../ItemsListItem/ItemsListItem';
 import ItemsDetails from '../ItemsDetails/ItemsDetails';
+import CharacterInfo from '../CharacterInfo/CharacterInfo';
 
 const ItemSearch = () => {
     const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const ItemSearch = () => {
     return(
         <>
             <div className="container">
+                <CharacterInfo />
                 <Link to={`/current-character/${character.id}/`}>Character sheet</Link>
                 <div className="search-input-container">
                     <form onSubmit={onSearch}>

@@ -1,5 +1,19 @@
 import { useDispatch } from "react-redux"
 
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'light' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(2),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
 const ItemsListItem = ({item}) => {
     const dispatch = useDispatch();
     const itemDetails = () => {
@@ -11,7 +25,9 @@ const ItemsListItem = ({item}) => {
 
     return(
         <div>
-            <li><p onClick={itemDetails}>{item.name}</p></li>
+            <Stack spacing={2} alignItems="flex-start">
+                <Item onClick={itemDetails}><Button>{item.name}</Button></Item>
+            </Stack>
         </div>
     )
 }
