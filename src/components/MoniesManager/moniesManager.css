@@ -1,5 +1,7 @@
 .monies-manager-container{
     display: flex;
+    margin-top: -125px;
+    margin-left: 65%;
 }
 
 .monies-count {

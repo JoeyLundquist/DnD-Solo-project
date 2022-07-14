@@ -14,3 +14,11 @@
     overflow:scroll;
     padding: 10px 20px;
 }
+
+.character-sheet-link{
+    margin: 10px 10px 10px 45%;
+}
+
+.search-input-container{
+    margin-left: 10%;
+}

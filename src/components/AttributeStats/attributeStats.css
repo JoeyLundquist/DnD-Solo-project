@@ -1,0 +1,12 @@
+.attributes-container{
+
+    width: 10%;
+    /* display: flex; */
+    margin-top: -125px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+}
+
+.attribute-list-item{
+    border: 1px solid black;
+}

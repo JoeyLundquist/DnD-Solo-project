@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 
 import './ItemSearch.css'
 import ItemsListItem from '../ItemsListItem/ItemsListItem';
 import ItemsDetails from '../ItemsDetails/ItemsDetails';
 import CharacterInfo from '../CharacterInfo/CharacterInfo';
+import MoniesManager from '../MoniesManager/MoniesManager';
 
 const ItemSearch = () => {
     const dispatch = useDispatch();
@@ -45,11 +48,14 @@ const ItemSearch = () => {
         <>
             <div className="container">
                 <CharacterInfo />
-                <Link to={`/current-character/${character.id}/`}>Character sheet</Link>
+                <MoniesManager />
+                <div className='character-sheet-link'>
+                <Link to={`/current-character/${character.id}/`}><Button>Character sheet</Button></Link>
+                </div>
                 <div className="search-input-container">
                     <form onSubmit={onSearch}>
-                        <input type="text" placeholder="Item" value={searchParams} onChange={e => setSearchParams(e.target.value)} />
-                        <button onClick={onSearch}>Search</button>
+                        <TextField type="text" label="Item" value={searchParams} onChange={e => setSearchParams(e.target.value)} />
+                        <Button onClick={onSearch}>Search</Button>
                     </form>
                 </div>
                 <div className="results-container">
@@ -66,7 +72,7 @@ const ItemSearch = () => {
                         <ItemsDetails page={'search'}/>
                         { itemDetail.name ?
                             <div>
-                                <button onClick={addItemToInventory}>Add Item</button>
+                                <Button variant='outlined' onClick={addItemToInventory}>Add Item</Button>
                             </div>
                             :
                             <></>

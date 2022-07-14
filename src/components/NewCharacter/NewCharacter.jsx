@@ -7,9 +7,9 @@ import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import  Select  from "@mui/material/Select";
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 import './NewCharacter.css'
-import TextField from '@mui/material/TextField';
 
 
 const NewCharacter = () => {

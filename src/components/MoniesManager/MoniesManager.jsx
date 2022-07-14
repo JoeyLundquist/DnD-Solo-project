@@ -15,6 +15,7 @@ const MoniesManager = () => {
 
 
     const updateMonies = (e) => {
+        e.preventDefault();
         dispatch({
             type: 'UPDATE_MONIES',
             payload: {

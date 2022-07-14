@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import EditIcon from '@mui/icons-material/Edit';
+
 
 import ItemsListItem from "../ItemsListItem/ItemsListItem";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
@@ -15,6 +15,8 @@ import { SpellDetails } from "../SpellDetails/SpellDetails";
 import SpellListItem from "../SpellListItem/SpellListItem";
 import MoniesManager from "../MoniesManager/MoniesManager";
 import CharacterInfo from "../CharacterInfo/CharacterInfo";
+import AttributeStats from "../AttributeStats/AttributeStats";
+
 
 import './currentCharacterInfo.css'
 
@@ -51,16 +53,9 @@ const CurrentCharacterPage = () => {
     return(
         <> 
             <CharacterInfo />
-            <div className="attributes-container">
-                <p>Strength: {character.strength}</p>
-                <p>Dexterity: {character.dexterity}</p>
-                <p>Wisdom: {character.wisdom}</p>
-                <p>Intelligence: {character.intelligence}</p>
-                <p>Charisma: {character.charisma}</p>
-                <p>Constitution: {character.constitution}</p>
-            </div>
-           
             <MoniesManager /><br></br>
+            <AttributeStats />
+           
            
 
             <Grid container spacing={2}>
