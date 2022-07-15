@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
 
 
 import './ItemSearch.css'
@@ -16,6 +17,8 @@ const ItemSearch = () => {
     const character = useSelector(store => store.characterReducer)
     const items = useSelector(store => store.itemSearchReducer)
     const itemDetail = useSelector(store => store.itemDetailReducer)
+    
+    const [addedAlert, setAddedAlert] = useState(false)
 
     const [searchParams, setSearchParams] = useState('');
 
@@ -42,6 +45,11 @@ const ItemSearch = () => {
                 charId: character.id
             }
         })
+        setAddedAlert(true)
+        setTimeout(() => {
+            setAddedAlert(false)
+        }, 1000)
+        
     }
 
     return(
@@ -54,7 +62,7 @@ const ItemSearch = () => {
                 </div>
                 <div className="search-input-container">
                     <form onSubmit={onSearch}>
-                        <TextField type="text" label="Item" value={searchParams} onChange={e => setSearchParams(e.target.value)} />
+                        <TextField className='item-search-input' type="text" label="Item" value={searchParams} onChange={e => setSearchParams(e.target.value)} />
                         <Button onClick={onSearch}>Search</Button>
                     </form>
                 </div>
@@ -73,10 +81,12 @@ const ItemSearch = () => {
                         { itemDetail.name ?
                             <div>
                                 <Button variant='outlined' onClick={addItemToInventory}>Add Item</Button>
+                                
                             </div>
                             :
                             <></>
                         }
+                        {addedAlert ? <Alert severity="success">This is a success alert — check it out!</Alert> : <></>}
                     </div>
                 </div>
             </div>

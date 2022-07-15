@@ -4,6 +4,8 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
+import './spellListItem.css'
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'light' ? '#1A2027' : '#fff',
@@ -48,7 +50,7 @@ const SpellListItem = ({spell, page}) => {
     return( 
         <>
             <Stack spacing={2} alignItems="flex-start">
-                <Item sx={{m:1}} className="item-list-item" key={spell.url}><Button onClick={fetchSpellDetails}>{spell.name}</Button>{editPrepared ? <button onClick={removePreparedSpell}>Un-prepare spell</button> : <></>}</Item>
+                <Item sx={{m:1}} className="item-list-item" key={spell.url}><Button onClick={fetchSpellDetails}>{spell.name}</Button><br></br>{editPrepared ? <Button color="error" onClick={removePreparedSpell}>Un-prepare spell</Button> : <></>}</Item>
             </Stack>
         </>
     )
