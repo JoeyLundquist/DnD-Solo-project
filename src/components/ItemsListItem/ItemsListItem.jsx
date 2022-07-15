@@ -13,7 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  width: 250,
+  width: 150,
 }));
 
 const ItemsListItem = ({item}) => {
@@ -27,7 +27,7 @@ const ItemsListItem = ({item}) => {
 
     return(
         <div>
-            <Stack spacing={2} alignItems="flex-start">
+            <Stack spacing={1} alignItems="flex-start">
                 <Item sx={{m:1}} className="item-list-item" onClick={itemDetails}><Button>{item.name}</Button></Item>
             </Stack>
         </div>

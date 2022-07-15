@@ -1,13 +1,15 @@
 .character-info-container{
-    border: 1px solid black;
-    width: 500px;
+    border: 1px solid rgb(161, 32, 21);
+    width: 35%;
     display: flex;
-    margin: 25px 25px 25px 33.33%;
+    margin: 25px 25px 0px 25%;
     height: 100px;
+    padding: 10px;
 }
 
 .character-info-container p{
-    border: 1px solid black;
+    border: 1px solid rgb(161, 32, 21);
     font-weight: 900;
     width:15%;
+    padding: 10px;
 }

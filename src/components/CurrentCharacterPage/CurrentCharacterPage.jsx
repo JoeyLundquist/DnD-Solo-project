@@ -2,9 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 
