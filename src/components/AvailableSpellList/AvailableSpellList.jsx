@@ -7,6 +7,8 @@ import { SpellDetails } from '../SpellDetails/SpellDetails';
 import '../ItemSearch/ItemSearch.css'
 import './availableSpellList.css'
 
+import { Button } from '@mui/material';
+
 
 const AvailableSpellList = () => {
     const dispatch = useDispatch();
@@ -45,7 +47,7 @@ const AvailableSpellList = () => {
     return (
         <>
             <h2>Available Spells</h2>
-            <Link to={`/current-character/${id}/`} >Character Sheet</Link>
+            <Button variant='outlined' size="large"><Link to={`/current-character/${id}/`} >Character Sheet</Link></Button> 
             <div className="spell-list-container">
                 <div className="spell-list-inner-container">
                 <h2>Available Spells</h2>
@@ -61,7 +63,7 @@ const AvailableSpellList = () => {
                 </div>
                 <div className="spell-list-inner-container">
                     <h2>Spell Details</h2>
-                    <button onClick={prepareSpell}>Prepare Spell</button>
+                    <Button variant="outlined" onClick={prepareSpell}>Prepare Spell</Button>
                     <div className='detail-container'>
                         <SpellDetails />
                     </div>

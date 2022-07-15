@@ -1,6 +1,6 @@
 .spell-list-inner-container{
     width: 33.33%;
-    border-left: 1px solid black;
+    border-left: 1px solid rgb(161, 32, 21);
     display: inline-block;
     box-sizing: border-box;
     overflow:scroll;
@@ -8,7 +8,7 @@
 }
 
 .spell-list-container{
-    border: 1px solid black;
+    border: 1px solid rgb(161, 32, 21);
     width: 80%;
     height: 500px;
     margin: 10px auto;

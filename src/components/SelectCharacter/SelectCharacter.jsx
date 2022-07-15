@@ -2,27 +2,41 @@ import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
+
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'light' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  width: 175,
+}));
+
 export const SelectCharacter = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const characterList = useSelector(store => store.characterList)
-    const character = useSelector(store => store.characterReducer)
+
     console.log(characterList)
 
     useEffect(() => {
-        setTimeout(() => {
             dispatch({
                 type: 'FETCH_CHARACTER_LIST'
             })
-        }, 500)
     }, [])
     
 
     return(
         <>
             <div className="select-character-list">
+                <Stack spacing={5} alignItems="flex-start" >
                 {characterList[0] && characterList.map(c => (
-                <p 
+                <Item 
                 key={c.id}
                 onClick={() => {
                         dispatch({
@@ -34,8 +48,9 @@ export const SelectCharacter = () => {
 
                 id={c.id}
                 >
-                    {c.name}
-                </p>))}
+                    <Button>{c.name}</Button>
+                </Item>))}
+                </Stack>
             </div>
         </>
     )

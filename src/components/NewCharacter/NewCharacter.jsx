@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import AttributeDropdown from "../AttributeDropdown/AttributeDropdown";
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import  Select  from "@mui/material/Select";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 import './NewCharacter.css'
 
@@ -13,22 +18,22 @@ const NewCharacter = () => {
     
     const racesAndClasses = useSelector(store => store.characterReducer)
 
-    // const [characterInfo, setCharacterInfo] = useState({
-    //     name: '',
-    //     level: '',
-    //     raceName: '',
-    //     className: '',
-    //     classLevel: 0,
-    //     strength: 0,
-    //     intelligence: 0,
-    //     dexterity: 0,
-    //     wisdom: 0,
-    //     constitution: 0,
-    //     charisma: 0,
-    //     hp: '',
-    //     speed: '',
-    //     ac: ''
-    // })
+    const [characterInfo, setCharacterInfo] = useState({
+        name: '',
+        level: '',
+        raceName: '',
+        className: '',
+        classLevel: 0,
+        strength: 0,
+        intelligence: 0,
+        dexterity: 0,
+        wisdom: 0,
+        constitution: 0,
+        charisma: 0,
+        hp: '',
+        speed: '',
+        ac: ''
+    })
 
     const [strength, setStrength] = useState(0)
     const [dexterity, setDexterity] = useState(0)
@@ -66,15 +71,14 @@ const NewCharacter = () => {
             charisma: charisma,
             level: characterLevel
         });
-        // setTimeout(() => {
-            dispatch({
-                    type: 'ADD_CHARACTER',
-                    payload: character
-                })
-                history.push('/select-character')
-        // }, 500)
+        dispatch({
+            type: 'ADD_CHARACTER',
+            payload: characterInfo
+        })
+        history.push('/select-character')
+    }
    
-    }   
+   
 
    
 
@@ -86,9 +90,11 @@ const NewCharacter = () => {
             <h2 className="page-label">Character Information</h2>
             <div className="new-character-input-container">
                 <div className="inner-character-creation-cards">
-                    <input 
+                    <TextField 
                         type="text" 
-                        placeholder="Name"
+                        label="Name"
+                        variant="standard"
+                        required
                         value={characterInfo.name}
                         onChange={e => setCharacterInfo({...characterInfo, name: e.target.value})}
                     />
@@ -97,31 +103,31 @@ const NewCharacter = () => {
 
                     <label>Race</label>
                     <br></br>
-                    <select id='character-race' value={characterInfo.raceName} onChange={e => setCharacterInfo({...characterInfo, raceName: e.target.value})}>
-                        <option value="0">...</option>
+                    <Select id='character-race' value={characterInfo.raceName} onChange={e => setCharacterInfo({...characterInfo, raceName: e.target.value})}>
+                        {/* <option value="0">...</option> */}
                         {racesAndClasses.races && racesAndClasses.races.map(race => (
-                            <option value={race.index}>{race.name}</option>
+                            <MenuItem value={race.index}>{race.name}</MenuItem>
                         ))}
-                    </select><br></br>
+                    </Select><br></br>
                     <label>Class</label><span>-</span><label>Class Level</label><br></br>
-                    <select id="character-class" value={characterInfo.className} onChange={e => setCharacterInfo({...characterInfo, className: e.target.value})}>
-                        <option value="0">...</option>
+                    <Select id="character-class" value={characterInfo.className} onChange={e => setCharacterInfo({...characterInfo, className: e.target.value})}>
+                        {/* <option value="0">...</option> */}
                         {racesAndClasses.classes && racesAndClasses.classes.map(classes => (
-                            <option value={classes.index}>{classes.name}</option>
+                            <MenuItem value={classes.index}>{classes.name}</MenuItem>
                         ))}
-                    </select>
-                    <select value={characterInfo.classLevel} onChange={e => setCharacterInfo({...characterInfo, classLevel: e.target.value})}>
-                        <option>...</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                    </select><br></br>
+                    </Select>
+                    <Select value={characterInfo.classLevel} onChange={e => setCharacterInfo({...characterInfo, classLevel: e.target.value})}>
+                        <MenuItem value="0">...</MenuItem>
+                        <MenuItem value="1">1</MenuItem>
+                        <MenuItem value="2">2</MenuItem>
+                        <MenuItem value="3">3</MenuItem>
+                        <MenuItem value="4">4</MenuItem>
+                        <MenuItem value="5">5</MenuItem>
+                        <MenuItem value="6">6</MenuItem>
+                        <MenuItem value="7">7</MenuItem>
+                        <MenuItem value="8">8</MenuItem>
+                        <MenuItem value="9">9</MenuItem>
+                    </Select><br></br>
                     <AttributeDropdown attribute="Character Level" setAttribute={setCharacterLevel} />
                 </div>
                 <div className="inner-character-creation-cards">
@@ -132,12 +138,12 @@ const NewCharacter = () => {
                     <AttributeDropdown attribute="Constitution" setAttribute={setConstitution}/>
                     <AttributeDropdown attribute="Charisma" setAttribute={setCharisma}/><br></br>
 
-                    <label>HP</label>
-                    <input className="hp-input" type="number" placeholder="HP" value={characterInfo.hp} onChange={e => setCharacterInfo({...characterInfo, hp: e.target.value})}/>
-                    <label>AC</label>
-                    <input className="hp-input" type="number" placeholder="AC" value={characterInfo.ac} onChange={e => setCharacterInfo({...characterInfo, ac: e.target.value})}/><br></br>
-                    <label>Speed</label>
-                    <input className="hp-input" type="number" placeholder="Speed" value={characterInfo.speed} onChange={e => setCharacterInfo({...characterInfo, 
+                    {/* <label>HP</label> */}
+                    <TextField required className="hp-input" variant="standard" type="number" label="HP" value={characterInfo.hp} onChange={e => setCharacterInfo({...characterInfo, hp: e.target.value})}/>
+                    {/* <label>AC</label> */}
+                    <TextField required className="hp-input" type="number" label="AC" variant="standard" value={characterInfo.ac} onChange={e => setCharacterInfo({...characterInfo, ac: e.target.value})}/>
+                    {/* <label>Speed</label> */}
+                    <TextField required className="speed-input" type="number" label="Speed" variant="standard" value={characterInfo.speed} onChange={e => setCharacterInfo({...characterInfo, 
                         speed: e.target.value, 
                         strength: strength, 
                         dexterity: dexterity, 
@@ -149,7 +155,7 @@ const NewCharacter = () => {
                     })}
                     />
                 </div>
-                <button onClick={() => onSubmit()}>Check me!!</button>
+                <Button variant="outlined" onClick={() => onSubmit()}>Create</Button>
             </div>
         </>
     )

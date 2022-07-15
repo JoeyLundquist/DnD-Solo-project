@@ -1,32 +1,16 @@
-.attributes-container{
-    border: 1px black solid;
-    width: 150px;
-    display: inline-block;
-    margin: 25px;
-}
-
-.character-info-container{
-    border: 1px solid black;
-    width: 200px;
-    display: inline-block;
-    margin: 25px;
-}
-
 .inventory-spells-list-container{
     /* border: 1px solid black; */
-    width: 75%;
-    margin: 10px auto;
-    height: 500px;
+    width: 85%;
+    margin: -575px 5% 0 12.5%;
+    height: 700px;
     display: flex;
 }
 
 .inventory-spells-container{
-    border: 1px solid black;
-    width: 33.33%;
-    height: 100%;
+    border: 1px solid rgb(161, 32, 21);
+    width: 25%;
+    height: 80%;
     display: inline-block;
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
     padding: 10px 25px;
     box-sizing: border-box;
     overflow:scroll;
