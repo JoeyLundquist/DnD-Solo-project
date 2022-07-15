@@ -8,7 +8,8 @@
 }
 
 .character-info-container p{
-    border: 1px solid rgb(161, 32, 21);
+    border-left: 1px solid rgb(161, 32, 21);
+    border-right: 1px solid rgb(161, 32, 21);
     font-weight: 900;
     width:15%;
     padding: 10px;

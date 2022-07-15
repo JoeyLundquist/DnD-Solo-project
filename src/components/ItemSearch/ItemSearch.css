@@ -21,4 +21,9 @@
 
 .search-input-container{
     margin-left: 10%;
+    /* background-color: white; */
+}
+
+.item-search-input{
+    background-color: white;
 }

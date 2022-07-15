@@ -10,7 +10,7 @@ const AttributeDropdown = ({attribute, setAttribute, setInfo}) => {
         <>
         <div className="attribute-dropdown" onChange={(e) => setAttribute(e.target.value)} >
             <InputLabel id='attribute-label'>{attribute}</InputLabel>
-            <Select labelId='attribute-label' value="0">
+            <Select labelId='attribute-label'>
                 <MenuItem value="0">...</MenuItem>
                 <MenuItem value="1">1</MenuItem>
                 <MenuItem value="2">2</MenuItem>
