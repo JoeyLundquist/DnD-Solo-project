@@ -49,6 +49,7 @@ router.get('/prepared/:charId', rejectUnauthenticated, (req, res) => {
         SELECT *
         FROM characters_spells
         WHERE character_id = $1
+        ORDER BY name ASC
     `
     
     pool.query(sqlQuery,[req.params.charId])

@@ -26,23 +26,24 @@ CREATE TABLE characters (
     "intelligence" INT,
     "wisdom" INT,
     "charisma" INT,
-    "copper_pieces" INT,
-    "silver_pieces" INT,
-    "electrum_pieces" INT,
-    "platinum_pieces" INT
+    "copper_pieces" INT DEFAULT '0',
+    "silver_pieces" INT DEFAULT '0',
+    "electrum_pieces" INT DEFAULT '0',
+    "gold_pieces" INT DEFAULT '0',
+    "platinum_pieces" INT DEFAULT '0');
+
+CREATE TABLE characters_items (
+    "id" SERIAL PRIMARY KEY,
+    "character_id" INT REFERENCES characters,
+    "name" VARCHAR,
+    "url" VARCHAR
 );
 
 CREATE TABLE characters_items (
     "id" SERIAL PRIMARY KEY,
     "character_id" INT REFERENCES characters,
-    "api_id" VARCHAR
-);
-
-CREATE TABLE characters_spells (
-    "id" SERIAL PRIMARY KEY,
-    "character_id" INT REFERENCES characters,
-    "api_id" VARCHAR,
-    "prepared" BOOLEAN DEFAULT false
+    "name" VARCHAR,
+    "url" VARCHAR
 );
 
 CREATE TABLE characters_conditions (

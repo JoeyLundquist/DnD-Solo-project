@@ -45,6 +45,7 @@ router.get('/inventory/:id', rejectUnauthenticated, (req, res) => {
         SELECT *
         FROM characters_items
         WHERE character_id = $1
+        ORDER BY name ASC
     `
     pool.query(sqlQuery, [req.params.id])
         .then(dbRes => res.send(dbRes.rows))

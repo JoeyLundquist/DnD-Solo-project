@@ -1,4 +1,7 @@
 import React from 'react';
+import dndPlayers from '../../images/dndPlayers.jpeg'
+import dndMinis from '../../images/dndMinis.jpg'
+import './infoPage.css'
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -9,7 +12,8 @@ function InfoPage() {
   return (
     <div className="container">
       <p>Info Page</p>
-      
+      <img src={dndPlayers} />
+      <img className='dnd-minis' src={dndMinis} />
     </div>
   );
 }

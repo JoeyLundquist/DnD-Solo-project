@@ -70,6 +70,7 @@ const CurrentCharacterPage = () => {
                     <h3>Items Details</h3>
                     <ItemsDetails page={'current'}/>
                     <Button onClick={removeItemFromInventory}>Remove from Inventory</Button>
+                    
                 {/* </div> */}
                 </Grid>
                 <Grid className="inventory-spells-container" item xs={4}>
