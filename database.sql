@@ -32,7 +32,7 @@ CREATE TABLE characters (
     "gold_pieces" INT DEFAULT '0',
     "platinum_pieces" INT DEFAULT '0');
 
-CREATE TABLE characters_items (
+CREATE TABLE characters_spells (
     "id" SERIAL PRIMARY KEY,
     "character_id" INT REFERENCES characters,
     "name" VARCHAR,

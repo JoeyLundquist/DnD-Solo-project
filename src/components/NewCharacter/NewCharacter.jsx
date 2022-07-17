@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import AttributeDropdown from "../AttributeDropdown/AttributeDropdown";
+import ClassLevelDropDown from "../ClassLevelDropDown/ClassLevelDropDown";
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import  Select  from "@mui/material/Select";
@@ -13,7 +14,7 @@ import './NewCharacter.css'
 
 
 const NewCharacter = () => {
-    const dispatch = useDispatch();
+        const dispatch = useDispatch();
     const history = useHistory();
     
     const racesAndClasses = useSelector(store => store.characterReducer)

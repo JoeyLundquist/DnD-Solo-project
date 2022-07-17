@@ -7,10 +7,9 @@ import InputLabel from '@mui/material/InputLabel';
 const AttributeDropdown = ({attribute, setAttribute, setInfo}) => {
 
     return(
-        <>
-        <div className="attribute-dropdown" onChange={(e) => setAttribute(e.target.value)} >
+        <div className="attribute-dropdown">
             <InputLabel id='attribute-label'>{attribute}</InputLabel>
-            <Select labelId='attribute-label'>
+            <Select labelId='attribute-label' onChange={(e) => setAttribute(e.target.value)}>
                 <MenuItem value="0">...</MenuItem>
                 <MenuItem value="1">1</MenuItem>
                 <MenuItem value="2">2</MenuItem>
@@ -34,8 +33,6 @@ const AttributeDropdown = ({attribute, setAttribute, setInfo}) => {
                 <MenuItem value="20">20</MenuItem>
             </Select>
         </div>
-
-        </>
     )
 }
 

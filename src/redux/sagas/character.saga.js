@@ -67,7 +67,18 @@ function* updateMonies(action) {
     }
 }
 
-
+function* updateCharacterInfo(action){
+    try{
+        const res = yield axios.put(`/api/character/update/${action.payload.id}`, action.payload)
+        yield put({
+            type: 'FETCH_CURRENT_CHARACTER_INFO', 
+            payload: action.payload.id
+        })
+    }
+    catch(err){
+        console.log('Failed to update character info', err)
+    }
+}
 
 function* characterSaga(action) {
     yield takeLatest('FETCH_RACES_AND_CLASSES', fetchRacesAndClasses);
@@ -75,6 +86,7 @@ function* characterSaga(action) {
     yield takeLatest('FETCH_CURRENT_CHARACTER_INFO', fetchCurrentCharacterInfo);
     yield takeLatest('FETCH_CHARACTER_LIST', fetchCharacterList);
     yield takeLatest('UPDATE_MONIES', updateMonies);
+    yield takeLatest('UPDATE_CHARACTER_INFO',  updateCharacterInfo)
 
 }
 

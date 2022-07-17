@@ -68,8 +68,8 @@ router.get('/select-character/:id', rejectUnauthenticated, (req, res) => {
 router.post('/create-char', rejectUnauthenticated, (req, res) => {
   const sqlQuery = `
     INSERT INTO characters
-    (user_id, name, level, race, class, class_lvl, hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+    (user_id, name, level, race, class, class_lvl, max_hp, current_hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
   `
   const sqlParams = [
     req.user.id,
@@ -78,6 +78,7 @@ router.post('/create-char', rejectUnauthenticated, (req, res) => {
     req.body.raceName,
     req.body.className,
     req.body.classLevel,
+    req.body.hp,
     req.body.hp,
     req.body.ac,
     req.body.speed,
@@ -137,6 +138,36 @@ router.put(`/monies/:charId`, rejectUnauthenticated, (req, res) => {
     .catch(err => {
       console.log('Failed to update monies', err)
       res.sendStatus(500) 
+    })
+})
+
+router.put(`/update/:id`, rejectUnauthenticated, (req, res) => {
+  const sqlQuery = `
+    UPDATE characters
+    SET class_lvl = $1, max_hp = $2, current_hp = $3, ac = $4, strength = $5, dexterity = $6, wisdom = $7, intelligence = $8, charisma = $9, constitution = $10
+    WHERE id = $11
+  `
+  const sqlParams = [
+    req.body.class_lvl,
+    req.body.max_hp,
+    req.body.current_hp,
+    req.body.ac,
+    req.body.strength,
+    req.body.dexterity,
+    req.body.wisdom,
+    req.body.intelligence,
+    req.body.charisma,
+    req.body.constitution,
+    req.params.id
+  ]
+
+  pool.query(sqlQuery, sqlParams)
+    .then(dbRes => {
+      res.sendStatus(200)
+    })
+    .catch(err => {
+      console.log('failed to update char', err)
+      res.sendStatus(500)
     })
 })
 

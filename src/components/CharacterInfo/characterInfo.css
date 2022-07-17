@@ -1,8 +1,8 @@
 .character-info-container{
     border: 1px solid rgb(161, 32, 21);
-    width: 35%;
+    width: 40%;
     display: flex;
-    margin: 25px 25px 0px 25%;
+    margin: 25px 25px 0px 20%;
     height: 100px;
     padding: 10px;
 }
@@ -14,3 +14,15 @@
     width:15%;
     padding: 10px;
 }
+
+.char-name{
+    margin-top: -5px;
+    margin-right: 5px;
+}
+
+.edit-buttons{
+    /* display: inline; */
+    position: absolute;
+    margin-left: 150px;
+}
+
