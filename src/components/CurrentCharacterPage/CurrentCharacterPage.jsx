@@ -52,8 +52,6 @@ const CurrentCharacterPage = () => {
             <CharacterInfo />
             <MoniesManager /><br></br>
             <AttributeStats />
-           
-           
 
             <Grid container spacing={2}>
             <div className="inventory-spells-list-container">
@@ -61,7 +59,7 @@ const CurrentCharacterPage = () => {
                 {/* <div className="inventory-spells-container"> */}
                     <h3>Inventory <Link to={`/current-character/item-search/${character.id}`}><Button>Search Items</Button></Link></h3>
                     <ul>
-                    {inventory.map(inv => <ItemsListItem item={inv}/>)}
+                    {inventory.map(inv => <ItemsListItem key={inv.id} item={inv}/>)}
                     </ul>
                 {/* </div> */}
                 </Grid>
@@ -70,13 +68,14 @@ const CurrentCharacterPage = () => {
                     <h3>Items Details</h3>
                     <ItemsDetails page={'current'}/>
                     <Button onClick={removeItemFromInventory}>Remove from Inventory</Button>
+
                 {/* </div> */}
                 </Grid>
                 <Grid className="inventory-spells-container" item xs={4}>
                 {/* <div className="inventory-spells-container"> */}
                     <h3>Spells/Cantrips <Link to={`/current-character/available-spells/${character.id}`}><Button>Manage spells</Button></Link><br></br></h3>
                     <ul>
-                        {preparedSpells.map(spells => <SpellListItem spell={spells}/>)}
+                        {preparedSpells.map(spells => <SpellListItem key={spells.id} spell={spells}/>)}
                     </ul>
                 {/* </div> */}
                 </Grid>

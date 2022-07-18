@@ -2,8 +2,8 @@
     border: 1px solid rgb(161, 32, 21);
     width: 35%;
     display: flex;
-    margin: 25px 25px 0px 25%;
-    height: 100px;
+    margin: 25px 25px 0px 20%;
+    height: 125px;
     padding: 10px;
 }
 
@@ -14,3 +14,31 @@
     width:15%;
     padding: 10px;
 }
+
+.char-name{
+    margin-right: 5px;
+}
+
+.edit-buttons{
+    /* display: inline; */
+    position: absolute;
+    margin-left: 150px;
+}
+
+.hp-edit-input{
+    background-color: white;
+    width: 60px;
+    height: 40px;
+}
+
+.edit-buttons-container{
+    margin-left: 20%;
+}
+
+.edit-hp-input{
+    margin-top: -10px;
+}
+
+/* .name-and-race-container{
+
+} */
