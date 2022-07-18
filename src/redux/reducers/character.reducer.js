@@ -15,7 +15,9 @@ export const characterReducer = (state = {}, action) => {
         case 'UPDATE_PLATINUM_PIECES':
             return {...state, platinum_pieces: action.payload}
         case 'UPDATE_CURRENT_HP':
-            return {...state, hp: action.payload}
+            return {...state, current_hp: action.payload}
+        case 'UPDATE_MAX_HP':
+            return {...state, max_hp: action.payload}
         case 'UPDATE_CLASS_LVL':
             return {...state, class_lvl: action.payload}
         case 'UPDATE_LVL':

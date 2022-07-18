@@ -1,5 +1,10 @@
-img {
+.dnd-minis-table {
     width: 600px;
     height: 350px;
     margin: 50px;
+}
+
+.dnd-sheets{
+    margin-left: 350px;
+    margin-top: -75px;
 }

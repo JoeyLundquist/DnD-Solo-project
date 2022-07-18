@@ -50,9 +50,9 @@ const AttributeStats = () => {
     return(
         <>
              <div className="attributes-container">
-                <div className="edit-buttons">
+                {/* <div className="edit-buttons">
                     {editMode ? <><Button>Update</Button> <Button onClick={changeEditMode}>Cancel</Button> </>  :<Button onClick={changeEditMode}><EditIcon /></Button>}
-                </div>
+                </div> */}
                 <div className="attribute-list-item">
                     {editMode ? <p> Strength: {character.strength}</p> : <p>Strength: {character.strength}</p>}
                     <p>Ability Check: {abilityCheckBonus(character.strength)}</p>

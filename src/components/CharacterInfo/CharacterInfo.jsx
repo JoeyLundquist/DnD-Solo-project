@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
+import TextField from '@mui/material/TextField';
 
 import ClassLevelDropDown from "../ClassLevelDropDown/ClassLevelDropDown";
 
@@ -34,22 +35,22 @@ const CharacterInfo = () => {
 
     return(
         <>
-            <div>
-                
-            </div>
             <div className="character-info-container">
-                <div>
-                    <h2 className="char-name">{character.name}</h2>
-                    {editMode ? <><Button onClick={changeEditMode}>Cancel</Button> </>  :<Button onClick={changeEditMode}><EditIcon /></Button>}
+                <div className="name-and-race-container">
+                    <h2 className="char-name">{character.name} <br></br> {character.race}</h2>
+                    {/* <p>Race: {character.race}</p> */}
                 </div>
                 {/* <p>Level: {character.level}</p> */}
-                <p>Race: {character.race}</p>
-                {editMode ? <span>Class:<br></br> {character.class} <ClassLevelDropDown /><CheckIcon onClick={updateCharacterInfo}/><CloseIcon onClick={changeEditMode}/></span> : <p>Class: {character.class} <span> lvl:{character.class_lvl}<EditIcon onClick={changeEditMode} fontSize="5px"/></span></p>}
+                {editMode ? <span>Class:<br></br> {character.class} <ClassLevelDropDown /></span> : <p>Class: {character.class} <span> lvl:{character.class_lvl}<EditIcon onClick={changeEditMode} fontSize="5px"/></span></p>}
                 <p>Speed: {character.speed}</p>
-                <p>HP: {character.max_hp}/{character.current_hp}</p>
+                {editMode ? <><p className="edit-hp-input">Max: <TextField className="hp-edit-input" onChange={(e) => dispatch({type: 'UPDATE_MAX_HP', payload: e.target.value})} value={character.max_hp}/>Current: <TextField className="hp-edit-input" type="number" onChange={(e) => dispatch({type: 'UPDATE_CURRENT_HP', payload: e.target.value})} value={character.current_hp}/></p></> :<p>HP: <EditIcon onClick={changeEditMode}/>{character.current_hp}/{character.max_hp}</p>}
                 <p>AC: {character.ac}</p>
             </div>
+            <div className="edit-buttons-container">
+            {editMode ? <><Button onClick={updateCharacterInfo}>Update</Button><Button onClick={changeEditMode}>Cancel</Button> </>  :<Button onClick={changeEditMode}><EditIcon /></Button>}
+            </div>
         </>
+
     )
 }
 
